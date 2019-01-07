@@ -12,21 +12,32 @@
             <div class="span3">
                 {{ include('includeType/attestation.html.twig') }}
                 
-                <span > <button style="width: 220px;" class="btn btn-primary">Atteser</button></span>
+                <span > <button style="width: 220px;" class="btn btn-primary">info générale</button>
             </div>
 
             <div class="span3">
 
                 {{ include('includeType/conducteur.html.twig') }}
-
+                   <div class="form-group">
+            {{ form_label(form.infractionConstater, "Autre Constant") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.infractionConstater) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '2'}}) }}
+        </div>
+                 <button style="width: 120px;" class="btn btn-primary">
+                     <a style="text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
+                                    Voir les attestattions
+                                </a>
+                 </button>
+                 <button style="width: 100px;" class="btn btn-primary">
+                      <a style="text-decoration: none; color: #ffffff;;" href="{{ path('police_attestation') }}">
+                                    Annuler
+                                </a>
+                 </button>
+                 
             </div>
-                            <div class="span3">
-                               
-                
-                                <a style="text-decoration: none; color: black;" href="{{ path('police_attestation_policier') }}"><i class="icon-eye-open"></i> Voir les attestations délivrées</a>
-                               
-                            </div>
-
+                           
         </div>
                                
         {{ form_end(form) }}
