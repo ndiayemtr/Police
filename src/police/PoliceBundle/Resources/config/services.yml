@@ -1,0 +1,4 @@
+services:
+#    police.example:
+#        class: police\PoliceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

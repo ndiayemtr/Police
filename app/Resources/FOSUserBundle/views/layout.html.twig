@@ -1,0 +1,27 @@
+{% extends "::layout/layout.html.twig" %}        
+
+{% block body %}
+    <div class="container">
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="row">
+            <div class="span3">
+                {{ include('includeTexte/teste.html.twig') }}
+            </div>
+            <div class="span9">
+                   {% block fos_user_content %}                          
+
+        {% endblock fos_user_content %}
+            </div>
+        </div>
+        
+
+     
+    </div> 
+
+{% endblock %}

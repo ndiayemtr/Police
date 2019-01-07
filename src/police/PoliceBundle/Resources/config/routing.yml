@@ -1,0 +1,101 @@
+#police_homepage:
+#    path:     /index
+#    defaults: { _controller: PoliceBundle:Attestation:index }
+    
+    #Agent de cirulation
+police_attestation:
+    path:     /attestation
+    defaults: { _controller: PoliceBundle:Attestation:attestation }
+    
+police_attestation_view_agent:
+    path:     /attestation_view_agent/{id}
+    defaults: { _controller: PoliceBundle:Attestation:attestationViewAgent }
+    
+police_attestation_valid:
+    path:     /attestation_valider/{id}
+    defaults: { _controller: PoliceBundle:Attestation:attestationValider }
+    
+police_attestation_liste_infraction:
+    path:     /liste_infraction/{id}
+    defaults: { _controller: PoliceBundle:Attestation:listeInfraction } 
+    
+police_attestation_edit_infraction:
+    path:     /edit_infraction/{id}
+    defaults: { _controller: PoliceBundle:Attestation:editInfraction } 
+    
+police_attestation_edit:
+    path:     /attestation_edit/{id}
+    defaults: { _controller: PoliceBundle:Attestation:edit }
+    
+police_attestation_policier:
+    path:     /attestation_policier/{page}
+    defaults:  
+        _controller: PoliceBundle:Attestation:AttDunPolicier
+        page:        1 
+    requirements:
+        page: \d*
+    #Agent de cirulation
+police_attes_msg:
+    path:     /pas_attestation
+    defaults: { _controller: PoliceBundle:Attestation:message }
+    
+police_attestation_view:
+    path:     /attestation/{id}
+    defaults: { _controller: PoliceBundle:Attestation:attestationView }
+    
+police_attestation_commi_view:
+    path:     /attestation_commi/{id}
+    defaults: { _controller: PoliceBundle:Attestation:attestationCommi }
+    
+
+    
+police_attestation_all:
+    path:     /attestation_all/{page}
+    defaults:  
+        _controller: PoliceBundle:Attestation:attestationAll 
+        page:        1 
+    requirements:
+        page: \d*
+    
+#police_attestation_pdf:
+#    path:     /attestation_pdf
+#    defaults: { _controller: PoliceBundle:Attestation:pdf }
+    
+police_attestation_mail:
+    path:     /attestation_mail
+    defaults: { _controller: PoliceBundle:Attestation:envoiMail }
+    
+#police_attestation_superviseur:
+#    path:     /attestation_superviseur
+#    defaults: { _controller: PoliceBundle:Attestation:superviseur }
+    
+police_attestation_superviseur_general:
+    path:     /attestation_superviseur_general/{page}
+    defaults: 
+        _controller: PoliceBundle:Attestation:superviseurGeneral
+        page:        1 
+    requirements:
+        page: \d*
+    
+police_attestation_percepteur:
+    path:     /attestation_percepteur/{page}
+    defaults: 
+        _controller: PoliceBundle:Attestation:percepteur 
+        page:        1 
+    requirements:
+        page: \d*
+    
+police_attestation_payer:
+    path:     /attestation_payer/{id}
+    defaults: { _controller: PoliceBundle:Attestation:attesPayer }
+    
+    
+police_attestation_recherche:
+    path:     /attestation_recherche
+    defaults: { _controller: PoliceBundle:Attestation:recherche }
+    
+police_attestation_recherche_traitement:
+    path:     /attestation_recherche_traitement
+    defaults: { _controller: PoliceBundle:Attestation:rechercheTraitement }
+    
+

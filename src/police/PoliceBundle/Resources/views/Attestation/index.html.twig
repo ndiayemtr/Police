@@ -1,0 +1,61 @@
+{% extends "::layout/layout.html.twig" %}        
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h2 style='text-align: center'> Attestation</h2>
+            <div class="span3">
+                {{ include('includeTexte/teste.html.twig') }}
+
+            </div>
+            {% for attestation in attestation %}
+                <div class="span3">
+                    <p>
+                        <span class="enGras"> N° Attestation : </span>{{ attestation.numeroAttestation }}<br>
+                        <span class="enGras"> Date : </span> {{ attestation.date|date('d/m/Y') }}<br>
+                        <span class="enGras"> Mle Collect : </span>{{ attestation.mleCollect }}<br>
+                        <span class="enGras"> Lieu : </span>{{ attestation.lieu }}<br>
+                        <span class="enGras"> Infraction constatée : </span><br>{{ attestation.infractionConstater }}<br>
+                    </p> 
+                    _______________ 
+
+                    <p>
+                        <span class="enGras"> commissariat de Police de : </span> {{ attestation.policier.commissariat.nomCommissariat }}<br>
+                        <span class="enGras"> N° Commissariat : </span>{{ attestation.policier.commissariat.numeroCommissariat }}<br>
+                        <span class="enGras"> Le commisaire : </span>{{ attestation.policier.commissariat.leCommissaire }}<br>
+                    </p>
+                    __________________
+                    <p>
+                        <span class="enGras"> Le policier en charge : </span>{{ attestation.policier.nomPolicier }} {{ attestation.policier.prenomPolicier }} <br>
+                        <span class="enGras"> Matricule : </span>{{ attestation.policier.matriculeDuPolicier }}
+                    </p>
+                </div>
+
+                <div class="span6">
+
+                    <p>
+                        <span class="enGras"> A lieu: </span>{{ attestation.alieu  }} le {{ attestation.date|date('d/m/Y') }}<br>
+                        <span class="enGras"> Le Commissaire </span>
+                        {{ attestation.policier.commissariat.leCommissaire }} <br>
+                        Certifie que les pièces suivantes : <br>
+                        <span class="enGras"> Permis: </span> {{ attestation.conducteur.numeroPermis  }}<br>
+                        <span class="enGras"> Assurance: </span> {{ attestation.conducteur.numeroAssurance  }}<br>
+                        <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }}<br>
+                        Appartenant à :<span class="enGras"> {{ attestation.conducteur.prenomConducteur  }} {{ attestation.conducteur.nomConducteur  }} </span> <br>
+                        Ont été déposées à la Commissariat de {{ attestation.policier.commissariat.nomCommissariat }}<br>
+                        Il devra se présenter au Commissariat pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
+                    </p>
+                </div>
+
+            </div>
+        {% endfor %}
+        <div class="row"> 
+            <div class="span5"> </div> 
+            <div class="span5">
+                {# <a href=""  class="btn btn-primary">Imprimé</a>
+                 <a href=""  class="btn btn-warning">Apporter des modifications</a>#}
+            </div>
+        </div> 
+
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "::layout/layout.html.twig" %}        
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h4 style='text-align: center'> Vous êtes entrés de modifier l' attestation N°: {{ attestation.numeroAttestation }}</h4>
+            {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
+                        <div class="span3">
+                {{ include('includeTexte/teste.html.twig') }}
+            </div>
+            <div class="span3">
+                {{ include('includeType/attestation.html.twig') }}
+                
+
+            </div>
+
+            <div class="span3">
+
+                {{ include('includeType/conducteur.html.twig') }}
+
+            </div>
+
+        </div>
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+easy_admin:
+    site_name: 'POLICE-ADMIN'
+    formats:
+        date:    'd/m/Y'
+        time:    'H:i'
+        datetime: 'd/m/Y H:i:s'
+        
+    entities:
+        Commissariat:
+            class: police\PoliceBundle\Entity\Commissariat
+            controller: Utilisateurs\UtilisateursBundle\Controller\UserController
+            
+        Commissaire:
+            class: Utilisateurs\UtilisateursBundle\Entity\Commissaire
+            controller: Utilisateurs\UtilisateursBundle\Controller\UserController
+            form:
+                fields:
+                - { property: 'nomCommissaire' }
+                - { property: 'prenomCommissaire'}
+                - { property: 'typeSuperviseur', type:'choice', type_options: {choices: {'Superviseur':'Superviseur','Superviseur General':'Superviseur General'}}}
+            
+        Policier:
+            class: Utilisateurs\UtilisateursBundle\Entity\Policier
+            controller: Utilisateurs\UtilisateursBundle\Controller\UserController
+            form:
+                fields:
+                - { property: 'nomPolicier' }
+                - { property: 'prenomPolicier'}
+                - { property: 'matriculeDuPolicier'}
+                - { property: 'commissariat'}
+                - { property: 'typePolicier', type:'choice', type_options: {choices: {'Agent de circulation':'Agent de circulation','Agent remet piéce':'Agent remet piéce', 'Percepteur':'Percepteur'}}}
+            
+        Utilisateurs:
+            class: Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+            controller: Utilisateurs\UtilisateursBundle\Controller\UserController
+            

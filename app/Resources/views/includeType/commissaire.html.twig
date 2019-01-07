@@ -1,0 +1,26 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"></h3>
+    </div>
+
+    <div class="box-body">
+
+        <div class="form-group">
+            {{ form_label(form.commissaire.nomCommissaire, "Nom Commissaire") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.commissaire.nomCommissaire) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.commissaire.nomCommissaire, {'attr': {'class': 'form-control', 'placeholder':'Nom Commissaire'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.commissaire.prenomCommissaire, "Prénom commissaire ") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.commissaire.prenomCommissaire) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.commissaire.prenomCommissaire, {'attr': {'class': 'form-control', 'placeholder':'Prénom commissaire'}}) }}
+        </div>
+       
+    </div>
+
+
+</div><!-- box box-primary-->

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block titre %}Attestation de police!{% endblock %}</title>
+        <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <link rel="stylesheet" href="file://Police/web/css/bootstrap.css" />
+        <link rel="stylesheet" href="file://Police/web/css/bootstrap-responsive.css" />
+        <link rel="stylesheet" href="file://Police/web/css/style.css" />
+        <link rel="stylesheet" href="file://Police/web/css/mon_style.css" />
+        <link rel="stylesheet" href="file://Police/web/css/font-awesome.css" />
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="file://Police/webfavicon.ico" />
+</head>
+<body>
+    <hr />
+
+        <div>
+        {% block content %}{% endblock %}
+    </div>
+
+
+
+<script src="file://Police/web/js/jquery-1.10.0.min.js"></script>
+<script src="file://Police/web/js/bootstrap.js"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

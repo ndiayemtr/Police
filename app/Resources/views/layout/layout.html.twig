@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block titre %}Attestation de police!{% endblock %}</title>
+        <meta name="keywords" content="{% block motsCles %}{% endblock %}" />
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/bootstrap.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/bootstrap-responsive.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/style.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/mon_style.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/font-awesome.css')) }}" />
+    {% block stylesheets %}{% endblock %}
+     <link rel="shortcut icon" type="image/x-icon" href="{{ absolute_url(asset('img/attestma.jpg')) }}" />
+</head>
+<body>
+    <div class="container">
+
+
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        {#<img id="banniere" src="{{ absolute_url(asset('img/policeBanniere.jpg')) }}" width="100%">#}
+        <div class="navbar-inner">
+            <div class="container">
+                <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="row"> 
+                <a class="span3 brand" href="">
+                    {% if app.user is defined and app.user is not null%}
+                        Bonjour :   {% if is_granted('ROLE_POLICIER') %}
+                                        <b>Policier</b>
+                                        {% elseif is_granted('ROLE_COMMISSAIRE')%}
+                                        <b>Superviseur</b>
+                                        {% elseif is_granted('ROLE_PERCEPTEUR')%}
+                                        <b>Percepteur</b>
+                                        {% elseif is_granted('ROLE_SUPERVISEUR_GENERAL')%}
+                                        <b>Superviseur Général</b>
+                                        {% elseif is_granted('ROLE_REMETTRE_PIECE')%}
+                                        <b>gestionnaire des attestations</b>
+                                    {% endif %}
+
+                    
+                    {{ app.user.username }}  
+
+                    {% endif %}
+                    </a>
+                    
+                    <div class="span5" style="text-align: center">
+                        <p>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                {{ render(controller("PoliceBundle:Attestation:recherche")) }}
+                            {% endif %}  
+                        </p>
+                    </div>
+                        
+                    <div class="span2 pull-right">
+                        <p>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                               <a href="{{path('fos_user_security_logout') }}" class="btn btn-primary"> Se déconnecter </a>
+                            {% else %}
+                                <a href="{{path('fos_user_security_login') }}" class="btn btn-primary"> Se connecter </a>
+                            {% endif %}  
+                        </p>
+                    </div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+
+        {% block body %}
+
+        {% endblock %}<br>
+
+        <hr />
+        <footer id="footer" class="vspace20">
+            <div class="container">
+                <div class="row">
+                    <div class="span4 offset1">
+                        <h4>Informations</h4>
+                        <ul class="nav nav-stacked">                       
+                            {# {{ render(controller("PagePageBundle:Pages:menu"))}} #}                          
+
+                        </ul>
+                    </div> 
+
+                    <div class="span4">
+                        <h4>Commissariat</h4>
+                        <p><i class="icon-map-marker"></i>&nbsp;Dakar 75 000 - 3 rue Cpi</p>
+                    </div>
+
+                    <div class="span2">
+                        <h4>Nous contacter</h4>
+                        <p><i class="icon-phone"></i>&nbsp;Tel: XXXXX </p>
+                        <p><i class="icon-print"></i>&nbsp;Fax: XXXXX</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span4">
+                        <p>&copy; Copyright {{ "now"|date('y') }} - Matar NDIAYE</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="{{ asset('js/jquery-1.10.0.min.js') }}"></script>
+        <script src="{{ asset('../js/bootstrap.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
