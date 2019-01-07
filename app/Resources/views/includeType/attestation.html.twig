@@ -29,13 +29,7 @@
             {# Génération de l'input. #}
             {{ form_widget(form.lieu, {'attr': {'class': 'form-control', 'placeholder':'Lieu'}}) }}
         </div>
-           <div class="form-group">
-            {{ form_label(form.infractionConstater, "Infraction Constater") }}
-            {# Affichage des erreurs pour ce champ précis. #}
-            {{ form_errors(form.infractionConstater) }}
-            {# Génération de l'input. #}
-            {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control'}}) }}
-        </div>
+        
         <div class="form-group">
             {{ form_label(form.aLieu, "A lieu  ") }}
             {# Affichage des erreurs pour ce champ précis. #}
