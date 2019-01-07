@@ -25,10 +25,14 @@
                 __________________
                 <p>
                     <span class="enGras"> Le policier en charge : </span>{{ attestation.policier.nomPolicier }} {{ attestation.policier.prenomPolicier }} <br>
-                    <span class="enGras"> Mle Collect : </span>{{ attestation.policier.matriculeDuPolicier }}
+                    <span class="enGras"> Mle Collect : </span>{{ attestation.policier.matriculeDuPolicier }} <br><br>
+                    
+                    <a class="icon-arrow-left" style="text-decoration: none; color: blue;" href="{{ path('police_attestation') }}">
+                                    Retour
+                                </a>
                 </p>
             </div>
-
+                    
             <div class="span3">
 
                 <p>
@@ -60,9 +64,9 @@
                         {% endfor %}
                         {{ montant }}
                     </p>
-                </div>
+                </div> 
                 
-
+            
         </div> 
 
     </div>
