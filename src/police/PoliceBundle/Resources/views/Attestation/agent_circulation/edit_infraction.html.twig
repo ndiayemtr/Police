@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h2 style='text-align: center'> Infraction</h2>
+            <h4 style='text-align: center'>Vous êtes entrain de modifier cette Infraction</h4>
             {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
             <div class="span3">
                 {{ include('includeTexte/teste.html.twig') }}
@@ -12,14 +12,14 @@
             <div class="span3">
 
                 <div class="box-body">
-
                     <div class="form-group">
-                        {{ form_label(form.nomInfraction, "nom Infraction") }}
+                        {{ form_label(form.categorie, "Choisir une Categorie") }}
                         {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.nomInfraction) }}
+                        {{ form_errors(form.categorie) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.nomInfraction, {'attr': {'class': 'form-control', 'placeholder':'nomInfraction'}}) }}
+                        {{ form_widget(form.categorie) }}
                     </div>
+
                     <div class="form-group">
                         {{ form_label(form.typeInfraction, "type Infraction ") }}
                         {# Affichage des erreurs pour ce champ précis. #}
@@ -29,7 +29,10 @@
                     </div>
 
                 </div>
+                <button class="btn btn-primary" style="width: 520px;">
 
+                    Enregistrer et Terminer
+                </button>
             </div>
 
             <div class="span3">
@@ -37,13 +40,13 @@
                 <div class="box-body">
 
                     <div class="form-group">
-                        {{ form_label(form.categorie, "Choisir une Categorie") }}
+                        {{ form_label(form.nomInfraction, "Nom Infraction") }}
                         {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.categorie) }}
+                        {{ form_errors(form.nomInfraction) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.categorie) }}
+                        {{ form_widget(form.nomInfraction, {'attr': {'class': 'form-control', 'placeholder':'nomInfraction'}}) }}
                     </div>
-                    
+
                     <div class="form-group">
                         {{ form_label(form.amende, "Amende") }}
                         {# Affichage des erreurs pour ce champ précis. #}
@@ -52,20 +55,10 @@
                         {{ form_widget(form.amende) }}
                     </div>
 
-
                 </div>
 
-            </div>
-                    
-                     <div class="span3">
-                               
-                
-                                <a style="text-decoration: none; color: black;" href="{{ path('police_attestation_valid', {'id':infraction.attestation.id} )}}"><i class="icon-eye-open"></i> Terminer</a>
-                               
-                            </div>
-
+            </div>  
         </div>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
         {{ form_end(form) }}
     </div>
 {% endblock %}
