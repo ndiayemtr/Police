@@ -3,13 +3,14 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h2 style='text-align: center'> Attestation</h2>
+            
             <div class="span3">
                 {{ include('includeTexte/teste.html.twig') }}
 
             </div>
 
             <div class="span9">
+                <h2 style='text-align: center'> Attestation</h2>
                 {% if attestations == null %}
                     <p>
                         <H3 class = "text-info"> Pas d'attestations disponible !!!</H3>
