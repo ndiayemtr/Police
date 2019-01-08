@@ -102,8 +102,7 @@ class InfractionType extends AbstractType {
                     ),
 //                    'expanded' => true,
 //                    'multiple' => false,
-                ))
-                ->add('save', SubmitType::class, array('label' => 'valider les infractions'));
+                ));
     }
 
     /**
