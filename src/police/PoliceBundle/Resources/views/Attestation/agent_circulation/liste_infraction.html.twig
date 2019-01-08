@@ -14,7 +14,7 @@
                 <div class="box-body">
 
                     <div class="form-group">
-                        {{ form_label(form.nomInfraction, "nom Infraction") }}
+                        {{ form_label(form.nomInfraction, "Nom Infraction") }}
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.nomInfraction) }}
                         {# Génération de l'input. #}
@@ -29,6 +29,7 @@
                     </div>
 
                 </div>
+                    <button style="width: 220px;" class="btn btn-primary"> Ajouter l'infraction </button>
 
             </div>
 
@@ -54,18 +55,15 @@
 
 
                 </div>
+                   
+                     <a class="btn btn-primary" style="text-decoration: none; width: 195px; color: #ffffff;" href="{{ path('police_attestation_valid', {'id':id} )}}">
+                                    Terminer
+                     </a>
+             
 
             </div>
-                    
-                     <div class="span3">
-                               
-                
-                                <a style="text-decoration: none; color: black;" href="{{ path('police_attestation_valid', {'id':id} )}}"><i class="icon-eye-open"></i> Terminer</a>
-                               
-                            </div>
 
         </div>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
         {{ form_end(form) }}
     </div>
 {% endblock %}
