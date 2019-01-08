@@ -3,13 +3,15 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h2 style='text-align: center'> Attestation</h2>
+           
             {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
-                        <div class="span3">
+                        <div class="span3 ">
                 {{ include('includeTexte/teste.html.twig') }}
                {# {{ include('includeType/commissariat.html.twig') }}#}
             </div>
-            <div class="span3">
+             <h2 style='text-align: center'> Attestation</h2>
+                 
+            <div class="span3 offset1">
                 {{ include('includeType/attestation.html.twig') }}
                 
                 <span > <button style="width: 220px;" class="btn btn-primary">info générale</button>
