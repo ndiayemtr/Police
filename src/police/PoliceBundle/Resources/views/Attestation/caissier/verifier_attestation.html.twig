@@ -1,0 +1,86 @@
+{% extends "::layout/layout.html.twig" %}        
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h4 style='text-align: center'> N° Attestation: {{ attestation.numeroAttestation }}</h4>
+            <div class="span3">
+                {{ include('includeTexte/teste.html.twig') }}
+
+            </div>
+            <div class="span3">
+                <p>
+                    <span class="enGras"> N° Attestation : </span>{{ attestation.numeroAttestation }}<br>
+                    <span class="enGras"> Date : </span> {{ attestation.date|date('d/m/Y') }}<br>
+                    <span class="enGras"> Lieu : </span>{{ attestation.lieu }}<br>
+
+                </p> 
+                _______________ 
+
+                <p>
+                    <span class="enGras"> commissariat de Police de : </span> {{ attestation.policier.commissariat.nomCommissariat }}<br>
+                    <span class="enGras"> N° Commissariat : </span>{{ attestation.policier.commissariat.numeroCommissariat }}<br>
+
+                </p>
+                __________________
+                <p>
+                    <span class="enGras"> Le policier en charge : </span>{{ attestation.policier.nomPolicier }} {{ attestation.policier.prenomPolicier }} <br>
+                    <span class="enGras"> Mle Collect : </span>{{ attestation.policier.matriculeDuPolicier }} <br><br>
+
+                </p>
+            </div>
+
+            <div class="span3">
+
+                <p>
+                    <span class="enGras"> A lieu: </span>{{ attestation.alieu  }} le {{ attestation.date|date('d/m/Y') }}<br>
+                    <span class="enGras"> Monsieur le commissaire </span>
+                    {{ attestation.policier.commissariat.commissaire.PrenomCommissaire }} {{ attestation.policier.commissariat.commissaire.NomCommissaire }} <br>
+                    Certifie que les pièces suivantes : <br>
+                    <span class="enGras"> Permis: </span> {{ attestation.conducteur.numeroPermis  }}<br>
+                    <span class="enGras"> NCNI: </span> {{ attestation.conducteur.ncni  }}<br>
+                    <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }}<br>
+                    Appartenant à :<span class="enGras"> {{ attestation.conducteur.prenomConducteur  }} {{ attestation.conducteur.nomConducteur  }} </span> <br>
+                    Ont été déposées à la Commissariat de {{ attestation.policier.commissariat.nomCommissariat }}<br>
+                    Il devra se présenter au Commissariat pour recupérer son Permis: <span style="color: blue;">{{ attestation.conducteur.numeroPermis  }} </span> le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
+                </p>
+
+            </div>
+
+            <div class="span3">
+                <p>
+                    {%set montant = 0 %}
+                <h5>Vous avez commis l'(es) infraction(s) suivante(s):</h5>
+                <strong> Nom infraction</strong>:
+                {% for infraction in infractions %}  
+                    {{ infraction.nomInfraction }} |                             
+                {% endfor %}<br>
+                <strong> Montant à payer</strong>:
+                {% for infraction in infractions %}
+                    {% set montant = montant + infraction.amende %}                             
+                {% endfor %}
+                {{ montant }}
+                </p>
+            </div> 
+
+
+        </div> 
+        <div class="row">
+            <div class="span3">
+
+            </div> 
+            <div class="span3">
+                <a class="icon-arrow-left" style="text-decoration: none; color: blue;" href="{{ path('police_attestation_percepteur') }}">
+                    Retour
+                </a>
+            </div> 
+            <div class="span3">
+                <a class="icon-ok" style="text-decoration: none; color: blue;" href="{{ path('police_attestation_payer', {'id' : attestation.id}) }}">
+                     validé paiement et retour
+                </a>
+            </div> 
+            
+
+        </div> 
+    </div>
+{% endblock %}
