@@ -25,16 +25,16 @@
             {# Génération de l'input. #}
             {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '2'}}) }}
         </div>
-                 <button style="width: 120px;" class="btn btn-primary">
-                     <a style="text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
-                                    Voir les attestattions
-                                </a>
-                 </button>
-                 <button style="width: 100px;" class="btn btn-primary">
-                      <a style="text-decoration: none; color: #ffffff;;" href="{{ path('police_attestation') }}">
+               
+                     <a class="btn btn-primary" style="width: 100px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
+                        Voir les attestattions
+                     </a>
+
+                 
+                      <a class="btn btn-primary" style="width: 60px; text-decoration: none; color: #ffffff;;" href="{{ path('police_attestation') }}">
                                     Annuler
                                 </a>
-                 </button>
+
                  
             </div>
                            
