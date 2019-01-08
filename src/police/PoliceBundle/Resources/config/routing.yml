@@ -43,6 +43,23 @@ police_attestation_view:
     path:     /attestation/{id}
     defaults: { _controller: PoliceBundle:Attestation:attestationView }
     
+    #Le Caissier
+police_attestation_percepteur:
+    path:     /attestation_percepteur/{page}
+    defaults: 
+        _controller: PoliceBundle:Caissier:percepteur 
+        page:        1 
+    requirements:
+        page: \d*
+    
+police_attestation_payer:
+    path:     /attestation_payer/{id}
+    defaults: { _controller: PoliceBundle:Caissier:attesPayer }
+    
+police_attestation_verication:
+    path:     /attestation_verifier/{id}
+    defaults: { _controller: PoliceBundle:Caissier:Verification }
+    
 police_attestation_commi_view:
     path:     /attestation_commi/{id}
     defaults: { _controller: PoliceBundle:Attestation:attestationCommi }
@@ -76,18 +93,6 @@ police_attestation_superviseur_general:
         page:        1 
     requirements:
         page: \d*
-    
-police_attestation_percepteur:
-    path:     /attestation_percepteur/{page}
-    defaults: 
-        _controller: PoliceBundle:Attestation:percepteur 
-        page:        1 
-    requirements:
-        page: \d*
-    
-police_attestation_payer:
-    path:     /attestation_payer/{id}
-    defaults: { _controller: PoliceBundle:Attestation:attesPayer }
     
     
 police_attestation_recherche:
