@@ -97,6 +97,7 @@ class AttestationController extends Controller {
         $attestation = new Attestation();
         $attestation->setNumeroAttestation($numero);
         $attestation->setPayer('NON');
+        $attestation->setEtatPiece('pas remettre');
         $attestation->setPolicier($policier);
         $attestation->setDate(new \DateTime());
         $attestation->setDateRecuperePermis(new \DateTime());
