@@ -34,7 +34,7 @@ police_attestation_policier:
         page:        1 
     requirements:
         page: \d*
-    #Agent de cirulation
+        
 police_attes_msg:
     path:     /pas_attestation
     defaults: { _controller: PoliceBundle:Attestation:message }
@@ -60,6 +60,21 @@ police_attestation_verication:
     path:     /attestation_verifier/{id}
     defaults: { _controller: PoliceBundle:Caissier:Verification }
     
+    #Gestion Piece
+police_attestation_gestion_piece:
+    path:     /attestation_gestion_piece/{page}
+    defaults: 
+        _controller: PoliceBundle:GestionPiece:GestionPiece 
+        page:        1 
+    requirements:
+        page: \d*
+        
+police_attestation_remettre_piece:
+    path:     /remettre_piece/{id}
+    defaults: { _controller: PoliceBundle:GestionPiece:remettrePiece }
+    
+    #fin gestion Piéce
+        
 police_attestation_commi_view:
     path:     /attestation_commi/{id}
     defaults: { _controller: PoliceBundle:Attestation:attestationCommi }
