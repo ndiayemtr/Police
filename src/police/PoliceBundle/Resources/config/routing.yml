@@ -68,7 +68,7 @@ police_attestation_gestion_piece:
         page:        1 
     requirements:
         page: \d*
-        
+           
 police_attestation_remettre_piece:
     path:     /remettre_piece/{id}
     defaults: { _controller: PoliceBundle:GestionPiece:remettrePiece }
