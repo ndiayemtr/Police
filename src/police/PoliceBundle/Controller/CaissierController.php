@@ -4,9 +4,6 @@ namespace police\PoliceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use police\PoliceBundle\Entity\Attestation;
-use police\PoliceBundle\Entity\Infraction;
 
 
 class CaissierController extends Controller { 
