@@ -69,6 +69,13 @@ class Attestation
      * @ORM\Column(name="payer", type="string", columnDefinition="enum('NON', 'OUI')")
      */
     private $payer;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="etatPiece", type="string", columnDefinition="enum('retirée', 'pas retirée')")
+     */
+    private $etatPiece;
    
     
     /**
@@ -314,5 +321,29 @@ class Attestation
     public function getPayer()
     {
         return $this->payer;
+    }
+
+    /**
+     * Set etatPiece
+     *
+     * @param string $etatPiece
+     *
+     * @return Attestation
+     */
+    public function setEtatPiece($etatPiece)
+    {
+        $this->etatPiece = $etatPiece;
+
+        return $this;
+    }
+
+    /**
+     * Get etatPiece
+     *
+     * @return string
+     */
+    public function getEtatPiece()
+    {
+        return $this->etatPiece;
     }
 }
