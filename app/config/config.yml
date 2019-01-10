@@ -83,15 +83,9 @@ knp_snappy:
         binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
         options:
             no-outline: true
-            #page-size: LETTER
-            # Recommended to set UTF-8 as default encoding :)
             encoding: UTF-8
-            page-size: A4
-           # dpi: 300
-            #image-quality: 80
+            page-size: A2
             margin-left: 15mm
             margin-right: 15mm
-            margin-top: 15mm
-            margin-bottom: 15mm
             user-style-sheet: C:\wamp64\www\Police\web\css
     
