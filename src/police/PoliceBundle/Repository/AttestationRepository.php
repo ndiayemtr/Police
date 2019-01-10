@@ -91,6 +91,13 @@ class AttestationRepository extends \Doctrine\ORM\EntityRepository {
     return $qb->getQuery()->getResult();
     }
 
+    /**
+     * permet au percepteur de voir les attestations de son commissariat
+     * @param type $page
+     * @param type $nbrAffichPage
+     * @param type $idPercepteur
+     * @return Paginator
+     */
     public function attestPercept($page, $nbrAffichPage, $idPercepteur) {
         $qb = $this->createQueryBuilder('att')
                 ->select('att')
@@ -98,6 +105,61 @@ class AttestationRepository extends \Doctrine\ORM\EntityRepository {
                 ->leftJoin('pol.commissariat', 'com')
                 ->andWhere('com.id =:id')
                 ->setParameter('id', $idPercepteur)
+                ->orderBy('att.id', 'DESC')
+                ->getQuery();
+        $qb
+           // On définit l'annonce à partir de laquelle commencer la liste
+           ->setFirstResult(($page-1) * $nbrAffichPage)
+           // Ainsi que le nombre d'annonce à afficher sur une page
+           ->setMaxResults($nbrAffichPage) ;
+            
+            return new Paginator($qb, true);
+    }
+    /**
+     * permet à un gestionnaire  de voir les attestations payés de son commissariat
+     * @param type $page
+     * @param type $nbrAffichPage
+     * @param type $idGestionnaire
+     * @return Paginator
+     */
+    public function attestGestionPiece($page, $nbrAffichPage, $idGestionnaire) {
+        $payer = 'OUI';
+        $qb = $this->createQueryBuilder('att')
+                ->select('att')
+                ->leftJoin('att.policier', 'pol')
+                ->leftJoin('pol.commissariat', 'com')
+                ->andWhere('com.id =:id')
+                ->setParameter('id', $idGestionnaire)
+                ->andWhere('att.payer =:payer')
+                ->setParameter('payer', $payer)
+                ->orderBy('att.id', 'DESC')
+                ->getQuery();
+        $qb
+           // On définit l'annonce à partir de laquelle commencer la liste
+           ->setFirstResult(($page-1) * $nbrAffichPage)
+           // Ainsi que le nombre d'annonce à afficher sur une page
+           ->setMaxResults($nbrAffichPage) ;
+            
+            return new Paginator($qb, true);
+    }
+    /**
+     * permet à un gestionnaire  de voir les attestations non payés
+     * de son commissariat
+     * @param type $page
+     * @param type $nbrAffichPage
+     * @param type $idGestionnaire
+     * @return Paginator
+     */
+    public function attestGestionPieceNonPayer($page, $nbrAffichPage, $idGestionnaire) {
+        $payer = 'NON';
+        $qb = $this->createQueryBuilder('att')
+                ->select('att')
+                ->leftJoin('att.policier', 'pol')
+                ->leftJoin('pol.commissariat', 'com')
+                ->andWhere('com.id =:id')
+                ->setParameter('id', $idGestionnaire)
+                ->andWhere('att.payer =:payer')
+                ->setParameter('payer', $payer)
                 ->orderBy('att.id', 'DESC')
                 ->getQuery();
         $qb
