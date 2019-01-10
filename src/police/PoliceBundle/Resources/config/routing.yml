@@ -73,25 +73,34 @@ police_attestation_remettre_piece:
     path:     /remettre_piece/{id}
     defaults: { _controller: PoliceBundle:GestionPiece:remettrePiece }
     
-    #fin gestion Piéce
-        
-police_attestation_commi_view:
-    path:     /attestation_commi/{id}
-    defaults: { _controller: PoliceBundle:Attestation:attestationCommi }
-    
-
-    
+    #Superviseur
 police_attestation_all:
     path:     /attestation_all/{page}
     defaults:  
-        _controller: PoliceBundle:Attestation:attestationAll 
+        _controller: PoliceBundle:Superviseur:attestationAll 
         page:        1 
     requirements:
         page: \d*
-    
-#police_attestation_pdf:
-#    path:     /attestation_pdf
-#    defaults: { _controller: PoliceBundle:Attestation:pdf }
+ 
+superviseur_voir_payer:
+    path:     /attestation_all_payer/{page}
+    defaults:  
+        _controller: PoliceBundle:Superviseur:attestationAllPayer 
+        page:        1 
+    requirements:
+        page: \d*
+        
+superviseur_voir_non_payer:
+    path:     /attestation_all_non_payer/{page}
+    defaults:  
+        _controller: PoliceBundle:Superviseur:attestationAllNonPayer 
+        page:        1 
+    requirements:
+        page: \d*
+        
+police_attestation_commi_view:
+    path:     /attestation_commi/{id}
+    defaults: { _controller: PoliceBundle:Superviseur:attestationCommi }
     
 police_attestation_mail:
     path:     /attestation_mail
