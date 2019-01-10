@@ -229,45 +229,6 @@ class AttestationController extends Controller {
         ));
     }
     
-    /**
-     * Permet à un controleur de voir toutes 
-     * les attestations de son commissariat
-     * @param type $page
-     * @return type
-     * @throws NotFoundHttpException
-     * @throws type
-     */
-     public function attestationAllAction($page) {
-         
-         if ($page < 1) {
-            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
-        }
-        
-        //je fixe je nombre d'annoce par page
-        $nbrAttPage = 4;
-        
-        $em = $this->getDoctrine()->getManager();
-        $commissaire = $em ->getRepository('UtilisateursBundle:Commissaire')
-                            ->findOneBy(array('Utilisateurs' => $this->getUser()->getId()));
-        $attestations = $em->getRepository('PoliceBundle:Attestation')->attestationCommi($page, $nbrAttPage, $commissaire->getId());
-        
-         // On calcule le nombre total de pages grâce au count($attestations) qui retourne
-         //  le nombre total d'annonces
-        $nbrTotalPages = ceil(count($attestations) / $nbrAttPage);
-        
-        // Si la page n'existe pas, on retourne une 404
-        if ($page > $nbrTotalPages) {
-            //throw $this->createNotFoundException("La page11 " . $page . " n'existe pas.");
-            return $this->redirectToRoute("police_attes_msg");
-        }
-        
-        return $this->render('PoliceBundle:Attestation:attestation_commi_all.html.twig', array(
-                    'attestations' => $attestations,
-                    'page' => $page,
-                    'nbrTotalPages' => $nbrTotalPages,
-        ));
-    }
-    
     public function messageAction(){
         return $this->render('PoliceBundle:Attestation:pas_attestation.html.twig');
     }
