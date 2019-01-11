@@ -1,5 +1,5 @@
 <form action="{{ path('police_attestation_recherche_traitement') }}" method="POST" class="navbar-form form-search pull-right">
-    {{ form_widget(form.recherche) }}
+    {{ form_widget(form.recherche, {'attr': {'placeholder':'N° Attestation'}} ) }}
     <button type="submit" class="btn">Rechercher</button>
     {{ form_widget(form) }}
 </form>
