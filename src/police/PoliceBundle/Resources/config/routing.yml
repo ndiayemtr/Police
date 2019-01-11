@@ -106,19 +106,32 @@ police_attestation_mail:
     path:     /attestation_mail
     defaults: { _controller: PoliceBundle:Attestation:envoiMail }
     
-#police_attestation_superviseur:
-#    path:     /attestation_superviseur
-#    defaults: { _controller: PoliceBundle:Attestation:superviseur }
-    
+    #superviseur_general:
 police_attestation_superviseur_general:
     path:     /attestation_superviseur_general/{page}
     defaults: 
-        _controller: PoliceBundle:Attestation:superviseurGeneral
+        _controller: PoliceBundle:SuperviseurGeneral:superviseurGeneral
+        page:        1 
+    requirements:
+        page: \d*
+        
+superviseur_voir_retirer:
+    path:     /attestation_all_retirer/{page}
+    defaults:  
+        _controller: PoliceBundle:SuperviseurGeneral:attestationAllRetirer
+        page:        1 
+    requirements:
+        page: \d*
+        
+superviseur_voir_non_retirer:
+    path:     /attestation_all_non_retirer/{page}
+    defaults:  
+        _controller: PoliceBundle:SuperviseurGeneral:attestationAllNonRetirer
         page:        1 
     requirements:
         page: \d*
     
-    
+    #Recherche une attestation:
 police_attestation_recherche:
     path:     /attestation_recherche
     defaults: { _controller: PoliceBundle:Attestation:recherche }
