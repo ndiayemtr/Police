@@ -12,73 +12,6 @@ use police\PoliceBundle\Form\InfractionType;
 use police\PoliceBundle\Form\RechercheType;
 
 class AttestationController extends Controller {
-    
-    /**
-     * Permet de recupérer toutes les attestations 
-     * de la police nationnale
-     * @return type
-    
-    public function indexAction() {
-        
-        $em = $this->getDoctrine()->getManager();
-        $attestation = $em->getRepository('PoliceBundle:Attestation')->findAll();
-        
-        return $this->render('PoliceBundle:Attestation:index.html.twig', array(
-                    'attestation' => $attestation,
-        ));
-    } */
-    
-    
-    /**
-     * 
-     * @return type
-    
-     public function superviseurAction() {
-        
-        $em = $this->getDoctrine()->getManager();
-        $attestation = $em->getRepository('PoliceBundle:Attestation')->findAll();
-        
-        return $this->render('PoliceBundle:Attestation:superviseur.html.twig', array(
-                    'attestation' => $attestation,
-        ));
-    } */
-    
-    /**
-     * Permet a un controle général de voir toutes les attstations 
-     * de la police nationale
-     * @param type $page
-     * @return type
-     * @throws NotFoundHttpException
-     * @throws type
-     */
-     public function superviseurGeneralAction($page) {
-         
-            if ($page < 1) {
-            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
-        }
-        
-        //je fixe je nombre d'annoce par page
-        $nbrAttPage = 4;
-        
-        $em = $this->getDoctrine()->getManager();
-        $attestations = $em->getRepository('PoliceBundle:Attestation')->allAttestations($page, $nbrAttPage);
-        
-        // On calcule le nombre total de pages grâce au count($attestations) qui retourne
-         //  le nombre total d'annonces
-        $nbrTotalPages = ceil(count($attestations) / $nbrAttPage);
-        
-        // Si la page n'existe pas, on retourne une 404
-        if ($page > $nbrTotalPages) {
-            throw $this->createNotFoundException("La page " . $page . " n'existe pas.");
-        }
-        
-        return $this->render('PoliceBundle:Attestation:attestation_general_all.html.twig', array(
-                    'attestations' => $attestations,
-                    'page' => $page,
-                    'nbrTotalPages' => $nbrTotalPages,
-        ));
-    }
-    
      
     /**
      * Permet d'ajouter une attestation
@@ -306,7 +239,7 @@ class AttestationController extends Controller {
             throw $this->createNotFoundException("Attestation introuvable");
         }
         
-       return $this->render('PoliceBundle:Attestation:attestation_all.html.twig', array(
+       return $this->render('PoliceBundle:Attestation/recherche:recherche_attestation.html.twig', array(
                     'attestations' => $attestations,
         ));
    }
