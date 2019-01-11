@@ -1,0 +1,107 @@
+{% extends "::layout/layout.html.twig" %}        
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="span3">
+                {{ include('includeTexte/teste.html.twig') }}
+
+            </div>
+
+
+
+
+            <div class="span9">
+
+
+                {% if attestations == null %}
+                    <p>
+                    <H3 class = "text-info"> Pas d'attestations disponible !!!</H3>
+                    </ p>
+                {% endif %}
+                {% if attestations|default is not empty %}
+
+                    <table class="table table-striped table-hover center-block">
+                        <thead>
+                            <tr>
+                                <th>N° Attestation</th>
+                                <th>Ncni</th>
+                                <th>Lieu</th>
+                                <th>Date</th>
+                                <th>Date retrait</th>
+                                <th>Voir attestationt</th>
+                                <th>Payer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for attestation in attestations %}
+                                <tr> 
+                                    <td> {{ attestation.numeroAttestation }} </td>                
+                                    <td> {{ attestation.conducteur.ncni }} </td>
+                                    <td> {{ attestation.aLieu }} </td>
+                                    <td> {{ attestation.date|date('d/m/Y') }} </td>
+                                    <td> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
+                                    <td> <a href="{{ path('police_attestation_verication', { 'id' : attestation.id }) }}"><i class="icon-eye-open"></i></a> </td>
+                                    <td> <a style="text-decoration: none" href="{{ path('police_attestation_payer', { 'id' : attestation.id }) }}">
+                                            <STRONG>   
+                                                {% if attestation.payer == 'NON'%} 
+                                                    <span style="color: red">{{ attestation.payer }}</span>
+                                                {% endif %} 
+                                            </STRONG>
+                                        </a>
+
+                                        <STRONG>   
+                                            {% if attestation.payer == 'OUI'%} 
+                                                <span style="color: greenyellow">{{ attestation.payer }}</span>
+                                            {% endif %} 
+                                        </STRONG>
+
+                                    </td>
+
+                                </tr>
+                            {%endfor%}
+                        {%endif%}
+
+                    </tbody>
+                </table>
+
+            </div>
+                         <div class="span3">
+
+                {% if app.user is defined and app.user is not null%}
+                    {% if is_granted('ROLE_POLICIER') %}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation') }}">
+                            Retour
+                        </a>
+                    {% elseif is_granted('ROLE_COMMISSAIRE')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_all') }}">
+                            Retour
+                        </a>
+                    {% elseif is_granted('ROLE_PERCEPTEUR')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_percepteur') }}">
+                            Retour
+                        </a>
+                    {% elseif is_granted('ROLE_SUPERVISEUR_GENERAL')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_superviseur_general') }}">
+                            Retour vers votre page principale
+                        </a>
+                    {% elseif is_granted('ROLE_REMETTRE_PIECE')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_remettre_piece') }}">
+                            Retour
+                        </a>
+                    {% endif %}  
+
+                {% endif %}
+
+
+            </div> 
+        </div>
+
+    {% endblock %}
