@@ -13,32 +13,34 @@
                  
             <div class="span3 offset1">
                 {{ include('includeType/attestation.html.twig') }}
-                
-                <span > <button style="width: 220px;" class="btn btn-primary">info générale</button>
+                    <P>
+                        <a class="btn btn-info" style="width: 120px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
+                        Voir les attestattions
+                     </a>
+                 
+                      <a class="btn btn-warning" style="width: 50px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation') }}">
+                                    Annuler
+                      </a>
+                                    </P><br>
+                                   <P>
+                                        <button style="width: 520px;" class="btn btn-primary">Ajouter ces informations et passser aux infractions  </button>
+                                    
+                </P>
             </div>
 
             <div class="span3">
 
                 {{ include('includeType/conducteur.html.twig') }}
                    <div class="form-group">
-            {{ form_label(form.infractionConstater, "Autre Constant") }}
+            {{ form_label(form.infractionConstater, "Observations") }}
             {# Affichage des erreurs pour ce champ précis. #}
             {{ form_errors(form.infractionConstater) }}
             {# Génération de l'input. #}
-            {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '2'}}) }}
+            {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
         </div>
-               
-                     <a class="btn btn-primary" style="width: 100px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
-                        Voir les attestattions
-                     </a>
-
-                 
-                      <a class="btn btn-primary" style="width: 60px; text-decoration: none; color: #ffffff;;" href="{{ path('police_attestation') }}">
-                                    Annuler
-                                </a>
-
-                 
+      
             </div>
+       
                            
         </div>
                                
