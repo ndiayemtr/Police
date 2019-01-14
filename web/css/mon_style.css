@@ -11,6 +11,14 @@
        
 }
 
-td{
+.centerTab{
     text-align: center;
+}
+
+#formInfraction{
+    margin-top: 10%;
+}
+
+#titreInfraction{
+    margin-left: 50%;
 }
