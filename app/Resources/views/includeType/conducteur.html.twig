@@ -5,6 +5,13 @@
 
     <div class="box-body">
 
+                <div class="form-group">
+            {{ form_label(form.conducteur.ncni, "Numéro cni ") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.conducteur.ncni) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.conducteur.ncni, {'attr': {'class': 'form-control', 'placeholder':'Numéro cni '}}) }}
+        </div>
         <div class="form-group">
             {{ form_label(form.conducteur.nomConducteur, "Nom Conducteur") }}
             {# Affichage des erreurs pour ce champ précis. #}
@@ -32,13 +39,6 @@
             {{ form_errors(form.conducteur.numeroPermis) }}
             {# Génération de l'input. #}
             {{ form_widget(form.conducteur.numeroPermis, {'attr': {'class': 'form-control', 'placeholder':'Numero Permis'}}) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.conducteur.ncni, "Ncni ") }}
-            {# Affichage des erreurs pour ce champ précis. #}
-            {{ form_errors(form.conducteur.ncni) }}
-            {# Génération de l'input. #}
-            {{ form_widget(form.conducteur.ncni, {'attr': {'class': 'form-control', 'placeholder':'numero carte identité'}}) }}
         </div>
         <div class="form-group">
             {{ form_label(form.conducteur.numeroCarteGrise, "Numero carte grise") }}
