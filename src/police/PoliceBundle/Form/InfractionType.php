@@ -18,7 +18,7 @@ class InfractionType extends AbstractType {
                 ->add('nomInfraction', ChoiceType::class, array(
                     'choices' => array(
                         'Pièce' => array(
-                            'Conduite d’un véhicule dépourvu de police d’assurance ' => 'Conduite d’un véhicule dépourvu de police d’assurance ',
+                            'Conduite d’un véhicule dépourvu de police d’assurance' => 'Conduite d’un véhicule dépourvu de police d’assurance ',
                             'Défaut de présentation de carte grise' => 'Défaut de présentation de carte grise',
                             'Défaut de présentation de permis de conduire' => 'Défaut de présentation de permis de conduire',
                             'Défaut de permis de conduire' => 'Défaut de permis de conduire',
