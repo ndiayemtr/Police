@@ -50,13 +50,6 @@ class Attestation
     private $infractionConstater;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="aLieu", type="string", length=255)
-     */
-    private $aLieu;
-
-    /**
      * @var \Date
      *
      * @ORM\Column(name="dateRecuperePermis", type="date")
@@ -69,6 +62,13 @@ class Attestation
      * @ORM\Column(name="payer", type="string", columnDefinition="enum('NON', 'OUI')")
      */
     private $payer;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", columnDefinition="enum('4R&+', '2R')")
+     */
+    private $categorie;
     
      /**
      * @var string
@@ -198,30 +198,6 @@ class Attestation
     }
 
     /**
-     * Set aLieu
-     *
-     * @param string $aLieu
-     *
-     * @return Attestation
-     */
-    public function setALieu($aLieu)
-    {
-        $this->aLieu = $aLieu;
-
-        return $this;
-    }
-
-    /**
-     * Get aLieu
-     *
-     * @return string
-     */
-    public function getALieu()
-    {
-        return $this->aLieu;
-    }
-
-    /**
      * Set dateRecuperePermis
      *
      * @param string $dateRecuperePermis
@@ -244,11 +220,7 @@ class Attestation
     {
         return $this->dateRecuperePermis;
     }
-
-  
-
-   
-
+    
     /**
      * Set conducteur
      *
@@ -345,5 +317,29 @@ class Attestation
     public function getEtatPiece()
     {
         return $this->etatPiece;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param string $categorie
+     *
+     * @return Attestation
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }
