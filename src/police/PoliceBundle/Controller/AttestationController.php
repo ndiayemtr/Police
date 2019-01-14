@@ -30,7 +30,7 @@ class AttestationController extends Controller {
         $attestation = new Attestation();
         $attestation->setNumeroAttestation($numero);
         $attestation->setPayer('NON');
-        $attestation->setEtatPiece('pas remettre');
+        $attestation->setEtatPiece('pas retirée');
         $attestation->setPolicier($policier);
         $attestation->setDate(new \DateTime());
         $attestation->setDateRecuperePermis(new \DateTime());
@@ -250,31 +250,33 @@ class AttestationController extends Controller {
     * @param Request $request
     * @return type
     */
-    public function listeInfractionAction($id, Request $request){
-        
+    public function listeInfractionAction($id, Request $request) {
+
         $em = $this->getDoctrine()->getManager();
-        
-        $infraction = new Infraction();        
-         $attestation     = $em->getRepository('PoliceBundle:Attestation')->find($id);    
+
+        $infraction = new Infraction();
+        $attestation = $em->getRepository('PoliceBundle:Attestation')->find($id);
 
         if (null === $attestation) {
             throw new NotFoundHttpException("L'annonce d'id " . $id . " n'existe pas.");
         }
-         
-        $form = $this->createForm(InfractionType::class, $infraction);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if (isset($_POST['type_infraction']) AND isset($_POST['nom_infraction']) AND isset($_POST['amende'])) {
+            $infraction->setAmende($_POST['amende']);
+            $infraction->setTypeInfraction($_POST['type_infraction']);
+            $infraction->setNomInfraction($_POST['nom_infraction']);
             $infraction->setAttestation($attestation);
             $em->persist($infraction);
             $em->flush();
         }
-         return $this->render('PoliceBundle:Attestation/agent_circulation:liste_infraction.html.twig', array(
-                    'form' => $form->createView(),
+
+
+        return $this->render('PoliceBundle:Attestation/agent_circulation:liste_infraction.html.twig', array(
                     'id' => $id
         ));
-    
-     }
-   /**
+    }
+
+    /**
     * Permet de modifier une infraction d'une attestation 
     * @param type $id
     * @param Request $request
@@ -286,23 +288,23 @@ class AttestationController extends Controller {
         
         $infraction = new Infraction();        
         $infraction     = $em->getRepository('PoliceBundle:Infraction')->find($id);    
-         
-        $form = $this->createForm(InfractionType::class, $infraction);
 
         if (null === $infraction) {
             throw new NotFoundHttpException("L'annonce d'id " . $id . " n'existe pas.");
         }
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            // Inutile de persister ici, Doctrine connait déjà notre atestation
+        if (isset($_POST['type_infraction']) AND isset($_POST['nom_infraction']) AND isset($_POST['amende'])) {
+            $infraction->setAmende($_POST['amende']);
+            $infraction->setTypeInfraction($_POST['type_infraction']);
+            $infraction->setNomInfraction($_POST['nom_infraction']);
             $em->flush();
+        
 
             return $this->redirectToRoute('police_attestation_valid', array('id' => $infraction->getAttestation()->getId()));
         }
 
         return $this->render('PoliceBundle:Attestation/agent_circulation:edit_infraction.html.twig', array(
                     'infraction' => $infraction,
-                    'form' => $form->createView(),
         ));
     
      }
