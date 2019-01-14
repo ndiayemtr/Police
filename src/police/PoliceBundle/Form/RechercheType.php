@@ -10,7 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class RechercheType extends AbstractType {
     
     public function buildForm(FormBuilderInterface $builder, array $options){
-        $builder->add('recherche', TextType::class, array('label' => false, 'attr' => array('input-medium search-query')));
+        $builder->add('recherche', TextType::class, 
+                array('label' => false, 'attr' => array('input-medium search-query'))
+                );
     }
     
       public function getName(){
