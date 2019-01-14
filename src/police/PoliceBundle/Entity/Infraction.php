@@ -41,13 +41,6 @@ class Infraction
     * @ORM\Column(name="amende", type="integer")
     */
     private $amende;
-
-   /**
-    * @var string 
-    *
-    * @ORM\Column(name="categorie", type="string", length=255)
-    */
-    private $categorie;
     
     /**
      * @ORM\ManyToOne(targetEntity="police\PoliceBundle\Entity\Attestation", cascade={"persist", "remove"})
@@ -136,30 +129,6 @@ class Infraction
     public function getAmende()
     {
         return $this->amende;
-    }
-
-    /**
-     * Set categorie
-     *
-     * @param string $categorie
-     *
-     * @return Infraction
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return string
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
     }
 
     /**
