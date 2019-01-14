@@ -37,16 +37,15 @@
             <div class="span3">
 
                 <p>
-                    <span class="enGras"> A lieu: </span>{{ attestation.alieu  }} le {{ attestation.date|date('d/m/Y') }}<br>
-                    <span class="enGras"> Monsieur le commissaire </span>
+                       <span class="enGras"> Monsieur le commissaire </span>
                     {{ attestation.policier.commissariat.commissaire.PrenomCommissaire }} {{ attestation.policier.commissariat.commissaire.NomCommissaire }} <br>
                     Certifie que les pièces suivantes : <br>
                     <span class="enGras"> Permis: </span> {{ attestation.conducteur.numeroPermis  }}<br>
-                    <span class="enGras"> NCNI: </span> {{ attestation.conducteur.ncni  }}<br>
-                    <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }}<br>
+                    <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }} le {{ attestation.date|date('d/m/Y') }}<br>
                     Appartenant à :<span class="enGras"> {{ attestation.conducteur.prenomConducteur  }} {{ attestation.conducteur.nomConducteur  }} </span> <br>
                     Ont été déposées à la Commissariat de {{ attestation.policier.commissariat.nomCommissariat }}<br>
                     Il devra se présenter au Commissariat pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
+                </p>
                 </p>
                 
             </div>
@@ -57,7 +56,7 @@
                     <h5>Vous avez commis l'(es) infraction(s) suivante(s):</h5>
                     <strong> Nom infraction</strong>:
                         {% for infraction in infractions %}  
-                            {{ infraction.nomInfraction  }}                             
+                            {{ infraction.nomInfraction  }} |                           
                         {% endfor %}<br>
                         <strong> Montant à payer</strong>:
                         {% for infraction in infractions %}
