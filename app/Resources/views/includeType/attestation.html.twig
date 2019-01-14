@@ -15,40 +15,34 @@
             {# Génération de l'input. #}
             {{ form_widget(form.numeroAttestation, {'attr': {'class': 'form-control', 'placeholder':'Numero attestation'}}) }}
         </div>
+                <div class="form-group">
+            {{ form_label(form.lieu, "Lieu de l'infraction") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.lieu) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.lieu, {'attr': {'class': 'form-control', 'placeholder':'Lieu'}}) }}
+        </div>
+                <div class="form-group">
+            {{ form_label(form.categorie, "Choisir le type de vehicule") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.categorie) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.categorie) }}
+        </div>
         <div class="form-group">
-            {{ form_label(form.date, "Date ") }}
+            {{ form_label(form.date, "Date du jour") }}
             {# Affichage des erreurs pour ce champ précis. #}
             {{ form_errors(form.date) }}
             {# Génération de l'input. #}
             {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="form-group">
-            {{ form_label(form.lieu, "Lieu ") }}
-            {# Affichage des erreurs pour ce champ précis. #}
-            {{ form_errors(form.lieu) }}
-            {# Génération de l'input. #}
-            {{ form_widget(form.lieu, {'attr': {'class': 'form-control', 'placeholder':'Lieu'}}) }}
-        </div>
-        
-        <div class="form-group">
-            {{ form_label(form.aLieu, "A lieu  ") }}
-            {# Affichage des erreurs pour ce champ précis. #}
-            {{ form_errors(form.aLieu) }}
-            {# Génération de l'input. #}
-            {{ form_widget(form.aLieu, {'attr': {'class': 'form-control', 'placeholder':'lieu'}}) }}
-        </div>
-        <div class="form-group">
-            {{ form_label(form.dateRecuperePermis, "Date de recuperation permis  ") }}
+            {{ form_label(form.dateRecuperePermis, "Date de recuperation piéce  ") }}
             {# Affichage des erreurs pour ce champ précis. #}
             {{ form_errors(form.dateRecuperePermis) }}
             {# Génération de l'input. #}
             {{ form_widget(form.dateRecuperePermis, {'attr': {'class': 'form-control', 'placeholder':'..........'}}) }}
         </div>
-        <div class="">
-           
-        
-        
-    </div>
 
     </div>
 
