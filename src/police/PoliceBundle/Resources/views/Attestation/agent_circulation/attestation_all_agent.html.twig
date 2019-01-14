@@ -32,7 +32,7 @@
                             {% for attestation in attestations %}
                                 <tr> 
                                     <td> {{ attestation.numeroAttestation }} </td>
-                                    <td> {{ attestation.aLieu }} </td> 
+                                    <td> {{ attestation.lieu }} </td> 
                                     <td> {{ attestation.date|date('d/m/Y') }} </td>
                                     <td> {{ attestation.date|date('d/m/Y') }} </td>
                                     <td> <a href="{{ path('police_attestation_view_agent', { 'id' : attestation.id }) }}"><i class="icon-eye-open"></i></a> </td>
