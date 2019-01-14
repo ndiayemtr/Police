@@ -3,62 +3,77 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h4 style='text-align: center'>Vous êtes entrain de modifier cette Infraction</h4>
-            {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
             <div class="span3">
                 {{ include('includeTexte/teste.html.twig') }}
 
             </div>
-            <div class="span3">
+                
+            <form id="formInfraction" action="{{ path('police_attestation_edit_infraction',{'id' : infraction.id}) }}"
+                  method="POST">
+                 <h4 id="titreInfraction">Vous êtes entrain de modifier cette Infraction</h4>
+                   <div class="span3">
 
-                <div class="box-body">
-                    <div class="form-group">
-                        {{ form_label(form.categorie, "Choisir une Categorie") }}
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.categorie) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.categorie) }}
-                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="page1">Type Infraction</label>
+                            <select id="type_infraction" name="type_infraction" placeholder="Choisir Type Infraction">
+                                <option></option>
+                                <option>Pièce</option>
+                                <option>Conduite</option>
+                                <option>Equipement</option>
+                                <option>Vehicule</option>
+                                <option>Operation</option>
+                                <option>Immatriculation</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        {{ form_label(form.typeInfraction, "type Infraction ") }}
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.typeInfraction) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.typeInfraction) }}
                     </div>
 
                 </div>
-                <button class="btn btn-primary" style="width: 520px;">
+
+                <div class="span3">
+
+                    <div class="box-body">
+
+                        <div class="form-group">
+                            <label class="page1">Nom Infraction</label>
+                            <div class="tooltips" title="">
+                                <select id="nom_infraction" name="nom_infraction" placeholder="Anycity">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                         </div>
+                     </div>
+                        
+                         <div class="span3">
+
+                    <div class="box-body">
+
+                        <div class="form-group">
+                            <label class="page1">Amende</label>
+                            <div class="tooltips" title="Please select the city that the customer is primarily to be served from.">
+                                <select id="amende" name="amende" placeholder="Anycity">
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                        <div class="row">
+                            <div class="span2"></div>
+                            <div class="span6"> 
+                                     <button class="btn btn-primary" style="width: 520px;">
 
                     Enregistrer et Terminer
                 </button>
-            </div>
-
-            <div class="span3">
-
-                <div class="box-body">
-
-                    <div class="form-group">
-                        {{ form_label(form.nomInfraction, "Nom Infraction") }}
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.nomInfraction) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.nomInfraction, {'attr': {'class': 'form-control', 'placeholder':'nomInfraction'}}) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ form_label(form.amende, "Amende") }}
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.amende) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.amende) }}
-                    </div>
-
-                </div>
-
-            </div>  
+                            </div>
+                        </div>
+                        
+                       
+            </form>
         </div>
-        {{ form_end(form) }}
     </div>
+
 {% endblock %}
