@@ -13,8 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AttestationType extends AbstractType
 {
@@ -28,8 +27,12 @@ class AttestationType extends AbstractType
                 ->add('date',              DateType::class)
                 ->add('lieu',              TextType::class)
                 ->add('infractionConstater',TextareaType::class)
-                ->add('aLieu',             TextType::class)
                 ->add('dateRecuperePermis',DateType::class)
+                ->add('categorie', ChoiceType::class, array(
+                    'choices' => array(
+                        '4R&+' => '4R&+',
+                        '2R' => '2R',
+                    ) ) )
                 ->add('conducteur',        ConducteurType::class);
             
     }
