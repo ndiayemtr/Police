@@ -3,25 +3,43 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h4 style='text-align: center'> Vous êtes entrés de modifier l' attestation N°: {{ attestation.numeroAttestation }}</h4>
+
             {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
-                        <div class="span3">
+            <div class="span3 ">
                 {{ include('includeTexte/teste.html.twig') }}
             </div>
+              <div id="imgAttes" class="span3">               
+                <img src="{{ absolute_url(asset('img/logo-validation.png')) }}">
+            </div>
+                <h4 id="titreAttesEdit"> Vous êtes entrés de modifier l' attestation {{ attestation.numeroAttestation}}</h4>
+
             <div class="span3">
                 {{ include('includeType/attestation.html.twig') }}
-                
-
             </div>
 
             <div class="span3">
-
                 {{ include('includeType/conducteur.html.twig') }}
-
-            </div>
-
+                <div class="form-group">
+                    {{ form_label(form.infractionConstater, "Observations") }}
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.infractionConstater) }}
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+                </div>
+            </div> 
         </div>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                <div class="row">
+                    <div class="span5">
+                    
+                </div>
+                    <div class="span6">
+                      <P>
+                    <button style="width: 300px;" class="btn btn-primary">Enregistrer les modifications apportées  </button>
+
+                </P>
+                </div>
+                </div>
+
         {{ form_end(form) }}
     </div>
 {% endblock %}
