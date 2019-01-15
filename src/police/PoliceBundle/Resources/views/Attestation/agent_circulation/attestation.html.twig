@@ -3,47 +3,45 @@
 {% block body %}
     <div class="container">
         <div class="row">
-           
+
             {{ form_start(form, {'attr': {'class': 'form-vertical'}}) }}
-                        <div class="span3 ">
+            <div class="span3 ">
                 {{ include('includeTexte/teste.html.twig') }}
-               {# {{ include('includeType/commissariat.html.twig') }}#}
             </div>
-             <h2 style='text-align: center'> Attestation</h2>
-                 
-            <div class="span3 offset1">
+              <div id="imgAttes" class="span3">               
+                <img src="{{ absolute_url(asset('img/logo-validation.png')) }}">
+            </div>
+            <h2 style='text-align: center'> Attestation</h2>
+
+            <div class="span3">
                 {{ include('includeType/attestation.html.twig') }}
-                    <P>
-                        <a class="btn btn-info" style="width: 120px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
+                <P>
+                    <a class="btn btn-info" style="width: 120px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
                         Voir les attestattions
-                     </a>
-                 
-                      <a class="btn btn-warning" style="width: 50px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation') }}">
-                                    Annuler
-                      </a>
-                                    </P><br>
-                                   <P>
-                                        <button style="width: 520px;" class="btn btn-primary">Ajouter ces informations et passser aux infractions  </button>
-                                    
+                    </a>
+
+                    <a class="btn btn-warning" style="width: 50px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation') }}">
+                        Annuler
+                    </a>
+                </P>
+                <P>
+                    <button style="width: 520px;" class="btn btn-primary">Ajouter ces informations et passser aux infractions  </button>
+
                 </P>
             </div>
 
             <div class="span3">
-
                 {{ include('includeType/conducteur.html.twig') }}
-                   <div class="form-group">
-            {{ form_label(form.infractionConstater, "Observations") }}
-            {# Affichage des erreurs pour ce champ précis. #}
-            {{ form_errors(form.infractionConstater) }}
-            {# Génération de l'input. #}
-            {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.infractionConstater, "Observations") }}
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.infractionConstater) }}
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+                </div>
+            </div> 
         </div>
-      
-            </div>
-       
-                           
-        </div>
-                               
+
         {{ form_end(form) }}
     </div>
 {% endblock %}
