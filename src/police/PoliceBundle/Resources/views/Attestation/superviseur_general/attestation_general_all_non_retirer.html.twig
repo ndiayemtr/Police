@@ -7,8 +7,12 @@
                 {{ include('includeTexte/teste.html.twig') }}
 
             </div>
-                <h4 style='text-align: center'> Suivi du traitement des attestation au niveau général | piéces non retitées</h4>
-            <div class="span9">
+                 <div id="imgAttes">               
+                <img src="{{ absolute_url(asset('img/logo-validation.png')) }}">
+            </div>
+                
+            <div id="tableauGen" class="span9">
+                <h4> Suivi du traitement des attestation au niveau général | piéces non retitées</h4>
                 {% if attestations == null %}
                     <p>
                         <H3 class = "text-info"> Pas d'attestations disponible !!!</H3>
@@ -21,9 +25,9 @@
                             <tr style="text-align: center">
                                 <th style="text-align: center">N° Attes.</th>
                                  <th style="text-align: center">commissariat</th>
-                                 <th style="text-align: center">Ncni</th>
+                                 <th style="text-align: center">Numéro cni</th>
                                  <th style="text-align: center">contact du chauf.</th>
-                                <th style="text-align: center">Lieu</th>
+                                <th style="text-align: center">Lieu infraction</th>
                                 <th style="text-align: center">Date</th>
                                 <th style="text-align: center">Date retrait</th>
                                 <th style="text-align: center">Voir attest.</th>
@@ -37,7 +41,7 @@
                                     <td style="text-align: center"> {{ attestation.policier.commissariat.nomCommissariat }} </td>
                                     <td style="text-align: center"> {{ attestation.conducteur.ncni }} </td>
                                     <td style="text-align: center"> {{ attestation.conducteur.numeroTelephone }} </td>
-                                    <td style="text-align: center"> {{ attestation.aLieu }} </td>
+                                    <td style="text-align: center"> {{ attestation.lieu }} </td>
                                     <td style="text-align: center"> {{ attestation.date|date('d/m/Y') }} </td>
                                     <td style="text-align: center"> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
                                     <td style="text-align: center"> <a href="{{ path('police_attestation_commi_view', { 'id' : attestation.id }) }}" target="_blank"><i class="icon-eye-open"> </i></a> </td>
@@ -55,7 +59,7 @@
                                         <ul>
                                             {% for p in range(1, nbrTotalPages) %}
                                             <li{% if p == page %} class="active"{% endif %}>
-                                                <a href="{{ path('police_attestation_superviseur_general', {'page': p}) }}">{{ p }}</a>
+                                                <a href="{{ path('superviseur_voir_non_retirer', {'page': p}) }}">{{ p }}</a>
                                             </li>
                                              {% endfor %}
                                         </ul>
@@ -75,7 +79,7 @@
             </div> 
             <div class="span3">
                 
-                      <a class="icon-eye-open" style="text-decoration: none; color: blue;" href="{{ path('superviseur_voir_payer') }}">
+                      <a class="icon-eye-open" style="text-decoration: none; color: blue;" href="{{ path('superviseur_voir_retirer') }}">
                     Piéce retirée
                 </a>
             </div> 
