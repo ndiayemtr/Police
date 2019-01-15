@@ -21,21 +21,22 @@
                     <table class="table table-striped table-hover center-block">
                         <thead>
                             <tr>
-                                <th>N° Attestation</th>
-                                <th>Lieu</th>
-                                <th>Date</th>
-                                <th>Consulter</th>
+                                <th style="text-align: center">N° Attestation</th>
+                                <th style="text-align: center">Lieu</th>
+                                <th style="text-align: center">Date</th>
+                                <th style="text-align: center">Consulter</th>
+                                <th style="text-align: center">Voir Attes.</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             {% for attestation in attestations %}
                                 <tr> 
-                                    <td> {{ attestation.numeroAttestation }} </td>
-                                    <td> {{ attestation.lieu }} </td> 
-                                    <td> {{ attestation.date|date('d/m/Y') }} </td>
-                                    <td> {{ attestation.date|date('d/m/Y') }} </td>
-                                    <td> <a href="{{ path('police_attestation_view_agent', { 'id' : attestation.id }) }}"><i class="icon-eye-open"></i></a> </td>
+                                  <td style="text-align: center"> {{ attestation.numeroAttestation }} </td>
+                                  <td style="text-align: center"> {{ attestation.lieu }} </td> 
+                                  <td style="text-align: center"> {{ attestation.date|date('d/m/Y') }} </td>
+                                  <td style="text-align: center"> {{ attestation.date|date('d/m/Y') }} </td>
+                                  <td style="text-align: center"> <a href="{{ path('police_attestation_view_agent', { 'id' : attestation.id }) }}" target="_bank"><i class="icon-eye-open"></i></a> </td>
 
                                 </tr>
                             {%endfor%}
