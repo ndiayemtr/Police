@@ -38,13 +38,61 @@ class AttestationRepository extends \Doctrine\ORM\EntityRepository {
             return new Paginator($qb, true);
     }
     
+    /**
+     *  recupérer les attestations 
+     * @param type $page
+     * @param type $nbrAffichPage
+     * @return Paginator
+     */
     public function allAttestations($page, $nbrAffichPage){
         
         $qb = $this->createQueryBuilder('att')
                 ->select('att')
                 ->getQuery();
-               
-
+        $qb
+           // On définit l'annonce à partir de laquelle commencer la liste
+           ->setFirstResult(($page-1) * $nbrAffichPage)
+           // Ainsi que le nombre d'annonce à afficher sur une page
+           ->setMaxResults($nbrAffichPage) ;
+            
+            return new Paginator($qb, true);
+        
+    }
+    /**
+     *  recupérer les attestations retirées
+     * @param type $page
+     * @param type $nbrAffichPage
+     * @return Paginator
+     */
+    public function allAttesRetirer($page, $nbrAffichPage){
+        $retirer = 'retirée';
+        $qb = $this->createQueryBuilder('att')
+                ->select('att')
+                ->andWhere('att.etatPiece =:etatPiece')
+                ->setParameter('etatPiece', $retirer)
+                ->getQuery();
+        $qb
+           // On définit l'annonce à partir de laquelle commencer la liste
+           ->setFirstResult(($page-1) * $nbrAffichPage)
+           // Ainsi que le nombre d'annonce à afficher sur une page
+           ->setMaxResults($nbrAffichPage) ;
+            
+            return new Paginator($qb, true);
+        
+    }
+    /**
+     *  recupérer les attestations non retirées
+     * @param type $page
+     * @param type $nbrAffichPage
+     * @return Paginator
+     */
+    public function allAttesNonRetirer($page, $nbrAffichPage){
+        $retirer = 'pas retirée';
+       $qb = $this->createQueryBuilder('att')
+                ->select('att')
+                ->andWhere('att.etatPiece =:etatPiece')
+                ->setParameter('etatPiece', $retirer)
+                ->getQuery();
         $qb
            // On définit l'annonce à partir de laquelle commencer la liste
            ->setFirstResult(($page-1) * $nbrAffichPage)

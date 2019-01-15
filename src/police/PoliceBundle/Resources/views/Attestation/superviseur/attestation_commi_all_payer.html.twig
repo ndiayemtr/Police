@@ -7,8 +7,12 @@
                 {{ include('includeTexte/teste.html.twig') }}
 
             </div>
-            <h3 style='text-align: center'> Suivi du traitement des attestation payées</h3>
-            <div class="span9">
+                  <div id="imgAttes">               
+                <img src="{{ absolute_url(asset('img/logo-validation.png')) }}">
+            </div>
+            
+            <div id="tableauAll" class="span9">
+                <h3 id="tireGestPiece"> Suivi du traitement des attestation payées</h3>
                 {% if attestations == null %}
                     <p>
                     <H3 class = "text-info"> Pas d'attestations disponible !!!</H3>
@@ -19,27 +23,27 @@
                     <table class="table table-striped table-hover center-block">
                         <thead>
                             <tr>
-                                <th>N° Attestation</th>
-                                <th>Ncni</th>
-                                <th>Tél</th>
-                                <th>Lieu</th>
-                                <th>Date</th>
-                                <th>Date retrait</th>
-                                <th>Etat piéce</th>
-                                <th>Voir attestationt</th>
+                                <td  style="text-align: center">N° Attestation</th>
+                                <td  style="text-align: center">Numéro cni</th>
+                                <td  style="text-align: center">Tél</th>
+                                <td  style="text-align: center">Lieu infraction</th>
+                                <td  style="text-align: center">Date</th>
+                                <td  style="text-align: center">Date retrait</th>
+                                <td  style="text-align: center">Etat piéce</th>
+                                <td  style="text-align: center">Voir attestationt</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             {% for attestation in attestations %}
                                 <tr> 
-                                    <td> {{ attestation.numeroAttestation }} </td>                
-                                    <td> {{ attestation.conducteur.ncni }} </td>
-                                    <td> {{ attestation.conducteur.numeroTelephone }} </td>
-                                    <td> {{ attestation.aLieu }} </td>
-                                    <td> {{ attestation.date|date('d/m/Y') }} </td>
-                                    <td> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
-                                    <td> 
+                                    <td  style="text-align: center"> {{ attestation.numeroAttestation }} </td>                
+                                    <td  style="text-align: center"> {{ attestation.conducteur.ncni }} </td>
+                                    <td  style="text-align: center"> {{ attestation.conducteur.numeroTelephone }} </td>
+                                    <td  style="text-align: center"> {{ attestation.lieu }} </td>
+                                    <td  style="text-align: center"> {{ attestation.date|date('d/m/Y') }} </td>
+                                    <td  style="text-align: center"> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
+                                    <td  style="text-align: center"> 
                                         <STRONG>   
                                             {% if attestation.etatPiece == 'pas retirée'%} 
                                                 <span style="color: red">{{ attestation.etatPiece }}</span>
@@ -53,7 +57,7 @@
                                         </STRONG>
 
                                     </td>
-                                    <td> <a href="{{ path('police_attestation_commi_view', { 'id' : attestation.id }) }}" target="_blank"><i class="icon-eye-open"> </i></a> </td>
+                                    <td  style="text-align: center"> <a href="{{ path('police_attestation_commi_view', { 'id' : attestation.id }) }}" target="_blank"><i class="icon-eye-open"> </i></a> </td>
 
                                 </tr>
                             {%endfor%}
@@ -68,7 +72,7 @@
                             <ul>
                                 {% for p in range(1, nbrTotalPages) %}
                                     <li{% if p == page %} class="active"{% endif %}>
-                                        <a href="{{ path('police_attestation_all', {'page': p}) }}">{{ p }}</a>
+                                        <a href="{{ path('superviseur_voir_payer', {'page': p}) }}">{{ p }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>

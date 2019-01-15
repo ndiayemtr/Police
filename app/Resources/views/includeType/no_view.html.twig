@@ -1,0 +1,29 @@
+  {% if app.user is defined and app.user is not null%}
+                    {% if is_granted('ROLE_POLICIER') %}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation') }}">
+                            Retour vers votre page principale
+                        </a>
+                    {% elseif is_granted('ROLE_COMMISSAIRE')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_all') }}">
+                            Retour vers votre page principale
+                        </a>
+                    {% elseif is_granted('ROLE_PERCEPTEUR')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_percepteur') }}">
+                            Retour vers votre page principale
+                        </a>
+                    {% elseif is_granted('ROLE_SUPERVISEUR_GENERAL')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_superviseur_general') }}">
+                            Retour vers votre page principale
+                        </a>
+                    {% elseif is_granted('ROLE_REMETTRE_PIECE')%}
+                        <a class="icon-arrow-left" style="text-decoration: none; color: blue;" 
+                           href="{{ path('police_attestation_remettre_piece') }}">
+                            Retour vers votre page principale
+                        </a>
+                    {% endif %}  
+
+                {% endif %}

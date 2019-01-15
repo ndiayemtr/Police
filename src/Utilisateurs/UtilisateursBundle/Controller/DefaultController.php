@@ -31,6 +31,10 @@ class DefaultController extends Controller {
 
              return $this->redirectToRoute('police_attestation_percepteur');
         }
+        elseif ($this->get('security.authorization_checker')->isGranted('ROLE_REMETTRE_PIECE')) {
+
+             return $this->redirectToRoute('police_attestation_gestion_piece');
+        }
         
         
         

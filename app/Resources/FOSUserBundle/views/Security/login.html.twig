@@ -1,37 +1,46 @@
-    {% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
 
-<div class="row">
-    <div class="span12">
-        <h2>Connexion</h2>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-               
+    <div class="row">
 
-                <div class="span4 offset2">
-                    <form action="{{ path("fos_user_security_check") }}" method="post">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <div class="span12">
 
-                    <label for="username">{{ 'security.login.username'|trans }}</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
-                    <label for="password">{{ 'security.login.password'|trans }}</label>
-                    <input type="password" id="password" name="_password" required="required" />
-                    <br />
-                    <input class="btn btn-primary" type="submit" value="{{ 'security.login.submit'|trans }}" />
-                    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
-                    </form>
+            <img class="offset2" src="{{ absolute_url(asset('img/logo-validation.png')) }}">
+            <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+
+                    <div class="span4 offset2 well" style="text-align: center">
+                        <h4>Bienvevue sur VIGIROUTE</h4>
+                        {% if error %}
+
+                            <div class="alert alert-error">
+                                <a class="close" data-dismiss="alert" href="#">×</a>
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                        {% endif %}
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                            {#<label for="username">{{ 'security.login.username'|trans }}</label>#}
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="Username" />
+
+                            {#<label for="password">{{ 'security.login.password'|trans }}</label>#}
+                            <input type="password" id="password" name="_password" required="required" placeholder="Password" />
+                            <br />
+                            <input class="btn btn-primary" type="submit" value="{{ 'security.login.submit'|trans }}" />
+                            <a href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
+                            
+                        </form>
+                    </div>
+
                 </div>
-
             </div>
         </div>
     </div>
-</div>
 
 {% endblock fos_user_content %}
