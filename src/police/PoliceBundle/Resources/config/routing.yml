@@ -1,7 +1,4 @@
-#police_homepage:
-#    path:     /index
-#    defaults: { _controller: PoliceBundle:Attestation:index }
-    
+  
     #Agent de cirulation
 police_attestation:
     path:     /attestation
@@ -42,6 +39,10 @@ police_attes_msg:
 police_attestation_view:
     path:     /attestation/{id}
     defaults: { _controller: PoliceBundle:Attestation:attestationView }
+    
+police_attestation_pdf:
+    path:     /attestation_pdf/{id}
+    defaults: { _controller: PoliceBundle:Attestation:pdf }
     
     #Le Caissier
 police_attestation_percepteur:
