@@ -8,12 +8,15 @@
                 {{ include('includeTexte/teste.html.twig') }}
 
             </div>
+                
+                 <div id="imgAttes">               
+                <img src="{{ absolute_url(asset('img/logo-validation.png')) }}">
+            </div>
 
 
 
-
-            <div class="span9" >
-                <h4 style='text-align: center'> Gestion de la restittution des piéces confisquées</h4><br>
+            <div id="tableauPercepteur" class="span9" >
+                <h4 id="tireGestPiece"> Gestion de la restittution des piéces confisquées</h4><br>
                 
                 {% if attestations == null %}
                     <p>
@@ -25,26 +28,26 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>N° Attestation</th>
-                                <th>Ncni</th>
-                                <th>Prenom Chauffeur</th>
-                                <th>Piéce confisquée</th>
-                                <th>Date retrait</th>
-                                <th>Payer</th>
-                                <th>Etat piéce</th>
+                                <th  style="text-align: center">N° Attestation</th>
+                                <th  style="text-align: center">Ncni</th>
+                                <th  style="text-align: center">Prenom Chauffeur</th>
+                                <th  style="text-align: center">Piéce confisquée</th>
+                                <th  style="text-align: center">Date retrait</th>
+                                <th  style="text-align: center">Payer</th>
+                                <th  style="text-align: center">Etat piéce</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             {% for attestation in attestations %}
                                 <tr> 
-                                    <td> {{ attestation.numeroAttestation }} </td>                
-                                    <td> {{ attestation.conducteur.ncni }} </td>
-                                    <td> {{ attestation.conducteur.prenomConducteur }} </td>
-                                    <td> {{ attestation.conducteur.numeroPermis }} </td>
-                                    <td> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
+                                   <td  style="text-align: center"> {{ attestation.numeroAttestation }} </td>                
+                                   <td  style="text-align: center"> {{ attestation.conducteur.ncni }} </td>
+                                   <td  style="text-align: center"> {{ attestation.conducteur.prenomConducteur }} </td>
+                                   <td  style="text-align: center"> {{ attestation.conducteur.numeroPermis }} </td>
+                                   <td  style="text-align: center"> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
                                     
-                                    <td>       
+                                   <td  style="text-align: center">       
                                             <STRONG>   
                                                 
                                                     <span style="color: greenyellow">{{ attestation.payer }}</span>
@@ -52,7 +55,7 @@
                                             </STRONG>
                                          
                                     </td>
-                                    <td> <a style="text-decoration: none" href="{{ path('police_attestation_remettre_piece', { 'id' : attestation.id }) }}">
+                                   <td  style="text-align: center"> <a style="text-decoration: none" href="{{ path('police_attestation_remettre_piece', { 'id' : attestation.id }) }}">
                                             <STRONG>   
                                                 {% if attestation.etatPiece == 'pas retirée'%} 
                                                     <span style="color: red">{{ attestation.etatPiece }}</span>
@@ -80,7 +83,7 @@
                                                 <ul>
                                                     {% for p in range(1, nbrTotalPages) %}
                                                         <li{% if p == page %} class="active"{% endif %}>
-                                                            <a href="{{ path('police_attestation_percepteur', {'page': p}) }}">{{ p }}</a>
+                                                            <a href="{{ path('police_attestation_gestion_piece', {'page': p}) }}">{{ p }}</a>
                                                         </li>
                                                     {% endfor %}
                                                 </ul>
