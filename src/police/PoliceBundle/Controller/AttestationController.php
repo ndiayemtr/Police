@@ -107,14 +107,14 @@ class AttestationController extends Controller {
      * @param type $id
      * @return Response
      */
-    public function attestationCommiAction($id) {
+    public function pdfAction($id) {
         $em = $this->getDoctrine()->getManager();
         $attestation = $em->getRepository('PoliceBundle:Attestation')->find($id);
         $infraction = $em->getRepository('PoliceBundle:Infraction')->InfractDunAtt($id);
         
         $snappy = $this->get('knp_snappy.pdf');
         
-         $html = $this->render('PoliceBundle:Attestation:attestation_commi_view.html.twig', array(
+         $html = $this->renderView('PoliceBundle:Attestation/agent_circulation:pdf.html.twig', array(
             'attestation' => $attestation,
             'infractions' => $infraction,
         ));
