@@ -20,5 +20,34 @@
 }
 
 #titreInfraction{
-    margin-left: 50%;
+    margin-left: 40%;
 }
+
+#imgAttes{
+    position: absolute;
+    top: 0;
+    margin-left: 70%;
+    padding-top: 2%;
+}
+table{
+    text-align: center;
+}
+
+#titreAttesEdit{
+    margin-left: 30%;
+}
+
+#tableauPercepteur{
+    padding-top: 10%;
+}
+#tableauAll{
+    padding-top: 13%;
+}
+#tableauGen{
+    padding-top: 15%;
+}
+
+#tireGestPiece{
+    margin-left: 20%;
+}
+
