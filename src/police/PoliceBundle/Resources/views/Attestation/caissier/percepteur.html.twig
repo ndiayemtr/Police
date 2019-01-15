@@ -8,12 +8,11 @@
                 {{ include('includeTexte/teste.html.twig') }}
 
             </div>
-
-
-
-
-            <div class="span9">
-                <h2 style='text-align: center'> Suivi du payement des amendes</h2><br>
+                 <div id="imgAttes">               
+                <img src="{{ absolute_url(asset('img/logo-validation.png')) }}">
+            </div>
+            <div id="tableauPercepteur" class="span9">
+                <h4 style='text-align: center'> Suivi du payement des amendes</h4><br>
                 
                 {% if attestations == null %}
                     <p>
@@ -25,26 +24,26 @@
                     <table class="table table-striped table-hover center-block">
                         <thead>
                             <tr>
-                                <th>N° Attestation</th>
-                                <th>Ncni</th>
-                                <th>Lieu</th>
-                                <th>Date</th>
-                                <th>Date retrait</th>
-                                <th>Voir attestationt</th>
-                                <th>Payer</th>
+                              <th  style="text-align: center">N° Attestation</th>
+                              <th  style="text-align: center">Ncni</th>
+                              <th  style="text-align: center">Lieu infraction</th>
+                              <th  style="text-align: center">Date</th>
+                              <th  style="text-align: center">Date retrait</th>
+                              <th  style="text-align: center">Voir attes.</th>
+                              <th  style="text-align: center">Payer</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             {% for attestation in attestations %}
                                 <tr> 
-                                    <td> {{ attestation.numeroAttestation }} </td>                
-                                    <td> {{ attestation.conducteur.ncni }} </td>
-                                    <td> {{ attestation.aLieu }} </td>
-                                    <td> {{ attestation.date|date('d/m/Y') }} </td>
-                                    <td> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
-                                    <td> <a href="{{ path('police_attestation_verication', { 'id' : attestation.id }) }}"><i class="icon-eye-open"></i></a> </td>
-                                    <td> <a style="text-decoration: none" href="{{ path('police_attestation_payer', { 'id' : attestation.id }) }}">
+                                  <td style="text-align: center"> {{ attestation.numeroAttestation }} </td>                
+                                  <td style="text-align: center"> {{ attestation.conducteur.ncni }} </td>
+                                  <td style="text-align: center"> {{ attestation.lieu }} </td>
+                                  <td style="text-align: center"> {{ attestation.date|date('d/m/Y') }} </td>
+                                  <td style="text-align: center"> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
+                                  <td style="text-align: center"> <a href="{{ path('police_attestation_verication', { 'id' : attestation.id }) }}" target="_bank"><i class="icon-eye-open"></i></a> </td>
+                                  <td style="text-align: center"> <a style="text-decoration: none" href="{{ path('police_attestation_payer', { 'id' : attestation.id }) }}">
                                             <STRONG>   
                                                 {% if attestation.payer == 'NON'%} 
                                                     <span style="color: red">{{ attestation.payer }}</span>
