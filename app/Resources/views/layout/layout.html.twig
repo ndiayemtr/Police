@@ -32,7 +32,7 @@
                 <a class="span3 brand" href="">
                     {% if app.user is defined and app.user is not null%}
                         Bonjour :   {% if is_granted('ROLE_POLICIER') %}
-                                        <b>Policier</b>
+                                        <b>Agent</b>
                                         {% elseif is_granted('ROLE_COMMISSAIRE')%}
                                         <b>Superviseur</b>
                                         {% elseif is_granted('ROLE_PERCEPTEUR')%}
@@ -90,12 +90,12 @@
                     </div> 
 
                     <div class="span4">
-                        <h4>Commissariat</h4>
+                        <h4>Brigade</h4>
                         <p><i class="icon-map-marker"></i>&nbsp;Dakar 75 000 - 3 rue Cpi</p>
                     </div>
 
                     <div class="span2">
-                        <h4>Nous contacter</h4>
+                        <h4>Nous contactez</h4>
                         <p><i class="icon-phone"></i>&nbsp;Tel: XXXXX </p>
                         <p><i class="icon-print"></i>&nbsp;Fax: XXXXX</p>
                     </div>
@@ -103,7 +103,7 @@
 
                 <div class="row">
                     <div class="span4">
-                        <p>&copy; Copyright {{ "now"|date('y') }} - Matar NDIAYE</p>
+                        
                     </div>
                 </div>
             </div>

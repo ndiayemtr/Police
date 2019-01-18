@@ -24,30 +24,30 @@ class Policier
     /**
      * @var string
      *
-     * @ORM\Column(name="nomPolicier", type="string", length=255)
+     * @ORM\Column(name="nomAgent", type="string", length=255)
      */
-    private $nomPolicier;
+    private $nomAgent;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomPolicier", type="string", length=255)
+     * @ORM\Column(name="prenomAgent", type="string", length=255)
      */
-    private $prenomPolicier;
+    private $prenomAgent;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="matriculeDuPolicier", type="string", length=255)
+     * @ORM\Column(name="matriculeDuAgent", type="string", length=255)
      */
-    private $matriculeDuPolicier;
+    private $matriculeDuAgent;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="typePolicier", type="string", columnDefinition="enum('Agent de circulation', 'Agent remet piéce', 'Percepteur')")
+     * @ORM\Column(name="typeAgent", type="string", columnDefinition="enum('Agent de circulation', 'Agent remet piéce', 'Percepteur')")
      */
-    private $typePolicier;
+    private $typeAgent;
     
     /**
      * @ORM\ManyToOne(targetEntity="police\PoliceBundle\Entity\Commissariat", cascade={"persist", "remove"})
@@ -75,73 +75,73 @@ class Policier
     /**
      * Set nomPolicier
      *
-     * @param string $nomPolicier
+     * @param string $nomAgent
      *
      * @return Policier
      */
-    public function setNomPolicier($nomPolicier)
+    public function setNomAgent($nomAgent)
     {
-        $this->nomPolicier = $nomPolicier;
+        $this->nomAgent = $nomAgent;
 
         return $this;
     }
 
     /**
-     * Get nomPolicier
+     * Get nomAgentr
      *
      * @return string
      */
-    public function getNomPolicier()
+    public function getNomAgent()
     {
-        return $this->nomPolicier;
+        return $this->nomAgent;
     }
 
     /**
-     * Set prenomPolicier
+     * Set prenomAgent
      *
-     * @param string $prenomPolicier
+     * @param string $prenomAgent
      *
      * @return Policier
      */
-    public function setPrenomPolicier($prenomPolicier)
+    public function setPrenomAgent($prenomAgent)
     {
-        $this->prenomPolicier = $prenomPolicier;
+        $this->prenomAgent = $prenomAgent;
 
         return $this;
     }
 
     /**
-     * Get prenomPolicier
+     * Get prenomAgent
      *
      * @return string
      */
-    public function getPrenomPolicier()
+    public function getPrenomAgent()
     {
-        return $this->prenomPolicier;
+        return $this->prenomAgent;
     }
 
     /**
-     * Set matriculeDuPolicier
+     * Set matriculeDuAgent
      *
-     * @param string $matriculeDuPolicier
+     * @param string $matriculeDuAgent
      *
      * @return Policier
      */
-    public function setMatriculeDuPolicier($matriculeDuPolicier)
+    public function setMatriculeDuAgent($matriculeDuAgent)
     {
-        $this->matriculeDuPolicier = $matriculeDuPolicier;
+        $this->matriculeDuAgent = $matriculeDuAgent;
 
         return $this;
     }
 
     /**
-     * Get matriculeDuPolicier
+     * Get matriculeDuAgent
      *
      * @return string
      */
-    public function getMatriculeDuPolicier()
+    public function getMatriculeDuAgent()
     {
-        return $this->matriculeDuPolicier;
+        return $this->matriculeDuAgent;
     }
 
     /**
@@ -193,26 +193,26 @@ class Policier
     }
 
     /**
-     * Set typePolicier
+     * Set typeAgent
      *
-     * @param string $typePolicier
+     * @param string $typeAgent
      *
      * @return Policier
      */
-    public function setTypePolicier($typePolicier)
+    public function setTypeAgent($typeAgent)
     {
-        $this->typePolicier = $typePolicier;
+        $this->typeAgent = $typeAgent;
 
         return $this;
     }
 
     /**
-     * Get typePolicier
+     * Get typeAgent
      *
      * @return string
      */
-    public function getTypePolicier()
+    public function getTypeAgent()
     {
-        return $this->typePolicier;
+        return $this->typeAgent;
     }
 }

@@ -24,16 +24,16 @@ class Commissariat
     /**
      * @var int
      *
-     * @ORM\Column(name="numeroCommissariat", type="integer")
+     * @ORM\Column(name="numeroBrigade", type="integer")
      */
-    private $numeroCommissariat;
+    private $numeroBrigade;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomCommissariat", type="string", length=255)
+     * @ORM\Column(name="nomBrigade", type="string", length=255)
      */
-    private $nomCommissariat;
+    private $nomBrigade;
     
     /**
      *@ORM\OneToOne(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Commissaire", cascade={"persist", "remove"})
@@ -53,53 +53,52 @@ class Commissariat
     }
 
     /**
-     * Set numeroCommissariat
+     * Set numeroBrigade
      *
-     * @param integer $numeroCommissariat
+     * @param integer $numeroBrigade
      *
      * @return Commissariat
      */
-    public function setNumeroCommissariat($numeroCommissariat)
+    public function setNumeroBrigade($numeroBrigade)
     {
-        $this->numeroCommissariat = $numeroCommissariat;
+        $this->numeroBrigade = $numeroBrigade;
 
         return $this;
     }
 
     /**
-     * Get numeroCommissariat
+     * Get numeroBrigade
      *
      * @return int
      */
-    public function getNumeroCommissariat()
+    public function getNumeroBrigade()
     {
-        return $this->numeroCommissariat;
+        return $this->numeroBrigade;
     }
 
     /**
      * Set nomCommissariat
      *
-     * @param string $nomCommissariat
+     * @param string $nomBrigade
      *
      * @return Commissariat
      */
-    public function setNomCommissariat($nomCommissariat)
+    public function setNomBrigade($nomBrigade)
     {
-        $this->nomCommissariat = $nomCommissariat;
+        $this->nomBrigade = $nomBrigade;
 
         return $this;
     }
 
     /**
-     * Get nomCommissariat
+     * Get nomBrigade
      *
      * @return string
      */
-    public function getNomCommissariat()
+    public function getNomBrigade()
     {
-        return $this->nomCommissariat;
+        return $this->nomBrigade;
     }
-
    
     /**
      * Generates the magic method
@@ -107,7 +106,7 @@ class Commissariat
      */
     public function __toString(){
     
-        return $this->getNomCommissariat();
+        return $this->getNomBrigade();
       
     }
 

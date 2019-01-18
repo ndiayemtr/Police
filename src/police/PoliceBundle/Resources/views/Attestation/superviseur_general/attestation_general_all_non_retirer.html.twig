@@ -16,6 +16,7 @@
                 {% if attestations == null %}
                     <p>
                         <H3 class = "text-info"> Pas d'attestations disponible !!!</H3>
+                        {{ include('includeType/no_view.html.twig') }}
                         </ p>
                     {% endif %}
                     {% if attestations|default is not empty %}
@@ -24,7 +25,7 @@
                         <thead style="text-align: center">
                             <tr style="text-align: center">
                                 <th style="text-align: center">N° Attes.</th>
-                                 <th style="text-align: center">commissariat</th>
+                                 <th style="text-align: center">Brigade</th>
                                  <th style="text-align: center">Numéro cni</th>
                                  <th style="text-align: center">contact du chauf.</th>
                                 <th style="text-align: center">Lieu infraction</th>
@@ -38,7 +39,7 @@
                             {% for attestation in attestations %}
                                 <tr> 
                                     <td style="text-align: center"> {{ attestation.numeroAttestation }} </td>                
-                                    <td style="text-align: center"> {{ attestation.policier.commissariat.nomCommissariat }} </td>
+                                    <td style="text-align: center"> {{ attestation.policier.commissariat.nomBrigade }} </td>
                                     <td style="text-align: center"> {{ attestation.conducteur.ncni }} </td>
                                     <td style="text-align: center"> {{ attestation.conducteur.numeroTelephone }} </td>
                                     <td style="text-align: center"> {{ attestation.lieu }} </td>
@@ -73,7 +74,7 @@
 
             </div> 
             <div class="span2">
-                <a class="icon-arrow-left" style="text-decoration: none; color: blue;" href="{{ path('superviseur_voir_retirer') }}">
+                <a class="icon-arrow-left" style="text-decoration: none; color: blue;" href="{{ path('police_attestation_superviseur_general') }}">
                       Retour
                 </a>
             </div> 

@@ -18,8 +18,8 @@ class CommissariatType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('numeroCommissariat', IntegerType::class)
-                ->add('nomCommissariat', TextType::class);
+                ->add('numeroBrigade', IntegerType::class)
+                ->add('nomBrigade', TextType::class);
     }
     
     /**

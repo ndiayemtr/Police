@@ -1,4 +1,6 @@
-  
+accueil_homepage:
+    path:     /
+    defaults: { _controller: PoliceBundle:Attestation:pageAccueil }  
     #Agent de cirulation
 police_attestation:
     path:     /attestation

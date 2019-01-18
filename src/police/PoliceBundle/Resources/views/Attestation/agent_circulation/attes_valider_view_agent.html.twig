@@ -18,29 +18,29 @@
                 </p> 
                 _______________ 
 
-                <p>
-                    <span class="enGras"> commissariat de Police de : </span> {{ attestation.policier.commissariat.nomCommissariat }}<br>
-                    <span class="enGras"> N° Commissariat : </span>{{ attestation.policier.commissariat.numeroCommissariat }}<br>
+                <p>                   
+                    <span class="enGras"> N° Brigade : </span>{{ attestation.policier.commissariat.numeroBrigade }}<br>
+                    <span class="enGras"> Brigade de la Gendermerie : </span> {{ attestation.policier.commissariat.nomBrigade }}<br>
                     
                 </p>
                 __________________
                 <p>
-                    <span class="enGras"> Le policier en charge : </span>{{ attestation.policier.nomPolicier }} {{ attestation.policier.prenomPolicier }} <br>
-                    <span class="enGras"> Mle Collect : </span>{{ attestation.policier.matriculeDuPolicier }}
+                    <span class="enGras"> Le genderme en charge : </span>{{ attestation.policier.nomAgent }} {{ attestation.policier.prenomAgent }} <br>
+                    <span class="enGras"> Mle Collect : </span>{{ attestation.policier.matriculeDuAgent }}
                 </p>
             </div>
 
             <div class="span3">
 
                 <p>
-                    <span class="enGras"> Monsieur le commissaire </span>
-                    {{ attestation.policier.commissariat.commissaire.PrenomCommissaire }} {{ attestation.policier.commissariat.commissaire.NomCommissaire }} <br>
+                    <span class="enGras"> Monsieur le Chef de la brigade </span>
+                    {{ attestation.policier.commissariat.commissaire.PrenomChef }} {{ attestation.policier.commissariat.commissaire.NomChef }} <br>
                     Certifie que les pièces suivantes : <br>
                     <span class="enGras"> Permis: </span> {{ attestation.conducteur.numeroPermis  }}<br>
                     <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }} le {{ attestation.date|date('d/m/Y') }}<br>
                     Appartenant à :<span class="enGras"> {{ attestation.conducteur.prenomConducteur  }} {{ attestation.conducteur.nomConducteur  }} </span> <br>
-                    Ont été déposées à la Commissariat de {{ attestation.policier.commissariat.nomCommissariat }}<br>
-                    Il devra se présenter au Commissariat pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
+                    Ont été déposées à la Brigade nationnale de {{ attestation.policier.commissariat.nomBrigade }}<br>
+                    Il devra se présenter à la brigade pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
                 </p>
                 
             </div>
@@ -68,7 +68,9 @@
                     </div> 
                      <div class="span2"> </div>
                     <div class="span5">
-                <a href=""  class="btn btn-primary">Imprimé</a>
+                <a class=" icon-print" target="_bank" style="text-decoration: none; color: blue;" href="{{ path('police_attestation_pdf', {id:attestation.id}) }}">
+                        Imprimé
+                    </a>
                 <a href="{{ path('police_attestation_edit', {'id' : attestation.id}) }}"  class="btn btn-warning">Apporter des modifications</a>
                 <a href="{{ path('police_attestation') }}"  class="btn btn-default">Nouveau Attestation</a>
                

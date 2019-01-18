@@ -12,6 +12,12 @@ use police\PoliceBundle\Form\InfractionType;
 use police\PoliceBundle\Form\RechercheType;
 
 class AttestationController extends Controller {
+    
+    public function pageAccueilAction(){
+        
+         return $this->render('PoliceBundle:Attestation:accueil.html.twig');
+        
+    }
      
     /**
      * Permet d'ajouter une attestation

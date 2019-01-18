@@ -64,7 +64,9 @@ class CaissierController extends Controller {
         
         $em->flush();
         
-        return $this->redirectToRoute('police_attestation_percepteur');
+        return $this->redirectToRoute('police_attestation_pdf', 
+                array('id'=>$id) 
+                );
        
     }
     

@@ -24,16 +24,16 @@ class Commissaire
     /**
      * @var string
      *
-     * @ORM\Column(name="nomCommissaire", type="string", length=255)
+     * @ORM\Column(name="nomChef", type="string", length=255)
      */
-    private $nomCommissaire;
+    private $nomChef;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomCommissaire", type="string", length=255)
+     * @ORM\Column(name="prenomChef", type="string", length=255)
      */
-    private $prenomCommissaire;
+    private $prenomChef;
     
     /**
      * @var string
@@ -60,51 +60,51 @@ class Commissaire
     }
 
     /**
-     * Set nomCommissaire
+     * Set nomChef
      *
-     * @param string $nomCommissaire
+     * @param string $nomChef
      *
      * @return Commissaire
      */
-    public function setNomCommissaire($nomCommissaire)
+    public function setNomChef($nomChef)
     {
-        $this->nomCommissaire = $nomCommissaire;
+        $this->nomChef = $nomChef;
 
         return $this;
     }
 
     /**
-     * Get nomCommissaire
+     * Get nomChef
      *
      * @return string
      */
-    public function getNomCommissaire()
+    public function getNomChef()
     {
-        return $this->nomCommissaire;
+        return $this->nomChef;
     }
 
     /**
-     * Set prenomCommissaire
+     * Set prenomChef
      *
-     * @param string $prenomCommissaire
+     * @param string $prenomChef
      *
      * @return Commissaire
      */
-    public function setPrenomCommissaire($prenomCommissaire)
+    public function setPrenomChef($prenomChef)
     {
-        $this->prenomCommissaire = $prenomCommissaire;
+        $this->prenomChef = $prenomChef;
 
         return $this;
     }
 
     /**
-     * Get prenomCommissaire
+     * Get prenomChef
      *
      * @return string
      */
-    public function getPrenomCommissaire()
+    public function getPrenomChef()
     {
-        return $this->prenomCommissaire;
+        return $this->prenomChef;
     }
 
     /**
@@ -137,7 +137,7 @@ class Commissaire
      */
     public function __toString(){
     
-        return $this->getNomCommissaire();
+        return $this->getNomChef();
       
     }
 

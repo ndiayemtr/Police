@@ -19,33 +19,33 @@ class UserController extends BaseAdminController {
         $user = new Utilisateurs();
 
         if ($entity instanceof Policier) {
-            if ($entity->getTypePolicier() == 'Agent de circulation') {
+            if ($entity->getTypeAgent() == 'Agent de circulation') {
                 $user->addRole("ROLE_POLICIER");
-                $user->setSalt($entity->getPrenomPolicier());
-                $user->setUsername($entity->getPrenomPolicier());
+                $user->setSalt($entity->getPrenomAgent());
+                $user->setUsername($entity->getPrenomAgent());
                 $user->setEnabled(true);
-                $user->setPlainPassword($entity->getNomPolicier());
-                $user->setUsernameCanonical($entity->getNomPolicier());
-                $user->setEmailCanonical($entity->getNomPolicier() . "@gmail.com");
-                $user->setEmail($entity->getNomPolicier() . "@gmail.com");
-            } elseif ($entity->getTypePolicier() == 'Agent remet piéce') {
+                $user->setPlainPassword($entity->getNomAgent());
+                $user->setUsernameCanonical($entity->getNomAgent());
+                $user->setEmailCanonical($entity->getNomAgent() . "@gmail.com");
+                $user->setEmail($entity->getNomAgent() . "@gmail.com");
+            } elseif ($entity->getTypeAgent() == 'Agent remet piéce') {
                 $user->addRole("ROLE_REMETTRE_PIECE");
-                $user->setSalt($entity->getPrenomPolicier());
-                $user->setUsername($entity->getPrenomPolicier());
+                $user->setSalt($entity->getPrenomAgent());
+                $user->setUsername($entity->getPrenomAgent());
                 $user->setEnabled(true);
-                $user->setPlainPassword($entity->getNomPolicier());
-                $user->setUsernameCanonical($entity->getNomPolicier());
-                $user->setEmailCanonical($entity->getNomPolicier() . "@gmail.com");
-                $user->setEmail($entity->getNomPolicier() . "@gmail.com");
-            } elseif ($entity->getTypePolicier() == 'Percepteur') {
+                $user->setPlainPassword($entity->getNomAgent());
+                $user->setUsernameCanonical($entity->getNomAgent());
+                $user->setEmailCanonical($entity->getNomAgent() . "@gmail.com");
+                $user->setEmail($entity->getNomAgent() . "@gmail.com");
+            } elseif ($entity->getTypeAgent() == 'Percepteur') {
                 $user->addRole("ROLE_PERCEPTEUR");
-                $user->setSalt($entity->getPrenomPolicier());
-                $user->setUsername($entity->getPrenomPolicier());
+                $user->setSalt($entity->getPrenomAgent());
+                $user->setUsername($entity->getPrenomAgent());
                 $user->setEnabled(true);
-                $user->setPlainPassword($entity->getNomPolicier());
-                $user->setUsernameCanonical($entity->getNomPolicier());
-                $user->setEmailCanonical($entity->getNomPolicier() . "@gmail.com");
-                $user->setEmail($entity->getNomPolicier() . "@gmail.com");
+                $user->setPlainPassword($entity->getNomAgent());
+                $user->setUsernameCanonical($entity->getNomAgent());
+                $user->setEmailCanonical($entity->getNomAgent() . "@gmail.com");
+                $user->setEmail($entity->getNomAgent() . "@gmail.com");
             }
 
             $em->persist($user);
@@ -55,22 +55,22 @@ class UserController extends BaseAdminController {
         } elseif ($entity instanceof Commissaire) {
             if ($entity->getTypeSuperviseur() == 'Superviseur') {
                 $user->addRole("ROLE_COMMISSAIRE");
-                $user->setSalt($entity->getPrenomCommissaire());
-                $user->setUsername($entity->getPrenomCommissaire());
+                $user->setSalt($entity->getPrenomChef());
+                $user->setUsername($entity->getPrenomChef());
                 $user->setEnabled(true);
-                $user->setPlainPassword($entity->getNomCommissaire());
-                $user->setUsernameCanonical($entity->getNomCommissaire());
-                $user->setEmailCanonical($entity->getNomCommissaire() . "@gmail.com");
-                $user->setEmail($entity->getNomCommissaire() . "@gmail.com");
+                $user->setPlainPassword($entity->getNomChef());
+                $user->setUsernameCanonical($entity->getNomChef());
+                $user->setEmailCanonical($entity->getNomChef() . "@gmail.com");
+                $user->setEmail($entity->getNomChef() . "@gmail.com");
             } elseif ($entity->getTypeSuperviseur() == 'Superviseur General') {
                 $user->addRole("ROLE_SUPERVISEUR_GENERAL");
-                $user->setSalt($entity->getPrenomCommissaire());
-                $user->setUsername($entity->getPrenomCommissaire());
+                $user->setSalt($entity->getPrenomChef());
+                $user->setUsername($entity->getPrenomChef());
                 $user->setEnabled(true);
-                $user->setPlainPassword($entity->getNomCommissaire());
-                $user->setUsernameCanonical($entity->getNomCommissaire());
-                $user->setEmailCanonical($entity->getNomCommissaire() . "@gmail.com");
-                $user->setEmail($entity->getNomCommissaire() . "@gmail.com");
+                $user->setPlainPassword($entity->getNomChef());
+                $user->setUsernameCanonical($entity->getNomChef());
+                $user->setEmailCanonical($entity->getNomChef() . "@gmail.com");
+                $user->setEmail($entity->getNomChef() . "@gmail.com");
             }
 
              var_dump($user->getRoles());

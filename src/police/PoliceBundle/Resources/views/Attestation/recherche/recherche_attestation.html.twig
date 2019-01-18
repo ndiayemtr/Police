@@ -40,7 +40,7 @@
                                 <tr> 
                                     <td> {{ attestation.numeroAttestation }} </td>                
                                     <td> {{ attestation.conducteur.ncni }} </td>
-                                    <td> {{ attestation.aLieu }} </td>
+                                    <td> {{ attestation.lieu }} </td>
                                     <td> {{ attestation.date|date('d/m/Y') }} </td>
                                     <td> {{ attestation.dateRecuperePermis|date('d/m/Y') }} </td>
                                     <td> <a href="{{ path('police_attestation_verication', { 'id' : attestation.id }) }}"><i class="icon-eye-open"></i></a> </td>
