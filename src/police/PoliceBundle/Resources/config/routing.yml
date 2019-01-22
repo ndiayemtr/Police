@@ -20,7 +20,11 @@ police_attestation_liste_infraction:
     
 police_attestation_edit_infraction:
     path:     /edit_infraction/{id}
-    defaults: { _controller: PoliceBundle:Attestation:editInfraction } 
+    defaults: { _controller: PoliceBundle:Attestation:editInfraction }
+    
+police_attestation_infraction_en_cours:
+    path:     /infraction_en_cours/{id}
+    defaults: { _controller: PoliceBundle:Attestation:infractionEnCours } 
     
 police_attestation_edit:
     path:     /attestation_edit/{id}

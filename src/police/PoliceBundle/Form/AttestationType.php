@@ -24,10 +24,12 @@ class AttestationType extends AbstractType
     {
         $builder
                 ->add('numeroAttestation', IntegerType::class)
-                ->add('date',              DateType::class)
+                ->add('date',              DateType::class, array(
+              'widget' => 'single_text',))
                 ->add('lieu',              TextType::class)
                 ->add('infractionConstater',TextareaType::class)
-                ->add('dateRecuperePermis',DateType::class)
+                ->add('dateRecuperePermis',DateType::class, array(
+              'widget' => 'single_text',))
                 ->add('categorie', ChoiceType::class, array(
                     'choices' => array(
                         '4R&+' => '4R&+',

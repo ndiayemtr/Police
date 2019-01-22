@@ -72,10 +72,11 @@ $(document).ready(function(){
 
     var $amende = $('#amende');
     $('#nom_infraction').change(function () {
+        
         var nom_infraction = $(this).val(), lcns = listAment[nom_infraction] || [];
 
         var html = $.map(lcns, function (lcn) {
-            return '<option value="' + lcn + '">' + lcn + '</option>';
+            return '<input style="color: #0000F0 ; cursor: none; font-size: 20px; " name="amende" value="' + lcn + '">' + lcn + '</input>';
         }).join('');
         $amende.html(html);
     });

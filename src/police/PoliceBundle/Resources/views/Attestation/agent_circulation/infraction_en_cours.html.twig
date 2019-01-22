@@ -1,0 +1,36 @@
+{% if infractions|default is not empty %}
+    <h4 style='text-align: center'> Infraction en cours</h4>
+    <table class="table table-striped table-hover center-block">
+        <thead>
+            <tr>
+                <th style="text-align: center">Nom infraction</th>
+                <th style="text-align: center">Type Infraction</th>
+                <th style="text-align: center">Amende</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for infraction in infractions %}
+                <tr> 
+                    <td style="text-align: center"> {{infraction.nomInfraction }} </td>
+                    <td style="text-align: center"> {{ infraction.typeInfraction}} </td> 
+                    <td style="text-align: center"> {{ infraction.amende }} </td>
+                </tr>
+            {%endfor%}
+
+
+        </tbody>
+    </table>
+
+    <div class="span3">
+
+        {%set montant = 0 %}
+        <strong> Montant à payer</strong>:
+        {% for infraction in infractions %}
+            {% set montant = montant + infraction.amende %}                             
+        {% endfor %}
+        {{ montant }}
+    </div> 
+
+{%endif%}
+

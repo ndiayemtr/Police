@@ -15,19 +15,17 @@
 
             <div class="span3">
                 {{ include('includeType/attestation.html.twig') }}
+                 <br><br>
                 <P>
                     <a class="btn btn-info" style="width: 120px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
                         Voir les attestattions
                     </a>
 
-                    <a class="btn btn-warning" style="width: 50px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation') }}">
+                    <a class="btn btn-warning" id="btn_annul" style="width: 50px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation') }}">
                         Annuler
                     </a>
                 </P>
-                <P>
-                    <button style="width: 520px;" class="btn btn-primary">Ajouter ces informations et passser aux infractions  </button>
-
-                </P>
+                
             </div>
 
             <div class="span3">
@@ -37,9 +35,13 @@
                     {# Affichage des erreurs pour ce champ précis. #}
                     {{ form_errors(form.infractionConstater) }}
                     {# Génération de l'input. #}
-                    {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+                    {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4','cols': '8'}}) }}
                 </div>
             </div> 
+                <P class="offset3">
+                    <button style="width: 520px;" class="btn btn-primary">Valider ces informations et indiquer les infractions  </button>
+
+                </P>
         </div>
 
         {{ form_end(form) }}

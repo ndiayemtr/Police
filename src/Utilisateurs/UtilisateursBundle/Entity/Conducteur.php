@@ -3,6 +3,7 @@
 namespace Utilisateurs\UtilisateursBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Conducteur
@@ -38,7 +39,10 @@ class Conducteur
     /**
      * @var int
      *
+     *
      * @ORM\Column(name="numeroTelephone", type="integer")
+     * @Assert\Length(min=9)
+     * @Assert\NotBlank()
      */
     private $numeroTelephone;
 

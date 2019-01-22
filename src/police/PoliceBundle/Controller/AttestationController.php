@@ -42,8 +42,24 @@ class AttestationController extends Controller {
         $attestation->setDateRecuperePermis(new \DateTime());
 
         $form = $this->createForm(AttestationType::class, $attestation);
-
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        $form->handleRequest($request);
+        
+        $validator = $this->get('validator');
+        
+         // On déclenche la validation sur notre object
+    $listErrors = $validator->validate($attestation);
+    
+             // Si le tableau n'est pas vide, on affiche les erreurs
+    if(count($listErrors) > 0) {
+      //return new Response(print_r($listErrors, true));
+      var_dump(count($listErrors));
+    die();
+      }
+    
+        if ($request->isMethod('POST') && $form->isValid()) {
+            
+    
+   
 
             $em->persist($attestation);
             $em->flush();
@@ -54,7 +70,8 @@ class AttestationController extends Controller {
             return $this->redirectToRoute('police_attestation_liste_infraction', array(
                         'id' => $idAttestation
             ));
-        }
+        
+         }
 
         return $this->render('PoliceBundle:Attestation/agent_circulation:attestation.html.twig', array(
                     'form' => $form->createView(),
@@ -298,6 +315,7 @@ class AttestationController extends Controller {
         if (null === $infraction) {
             throw new NotFoundHttpException("L'annonce d'id " . $id . " n'existe pas.");
         }
+        //$form = $this->createForm(AttestationType::class, $infraction);
 
         if (isset($_POST['type_infraction']) AND isset($_POST['nom_infraction']) AND isset($_POST['amende'])) {
             $infraction->setAmende($_POST['amende']);
@@ -315,7 +333,22 @@ class AttestationController extends Controller {
     
      }
 
-        
+    /**
+     * Permet de voir la liste des infraction en cours
+     * @param type $id
+     * @return type
+     */
+    public function infractionEnCoursAction($id) {
+        $em = $this->getDoctrine()->getManager();
+       // $attestation = $em->getRepository('PoliceBundle:Attestation')->find($id);
+        $infraction = $em->getRepository('PoliceBundle:Infraction')->InfractDunAtt($id);
+
+        return $this->render('PoliceBundle:Attestation/agent_circulation:infraction_en_cours.html.twig', array(
+                    //'attestation' => $attestation,
+                     'id' => $id,
+                    'infractions' => $infraction,
+        ));
+    }  
         
     
 

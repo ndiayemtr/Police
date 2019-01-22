@@ -31,8 +31,8 @@
                 </p>
                 __________________
                 <p>
-                    <span class="enGras"> Le genderme en charge : </span>{{ attestation.policier.nomAgent }} {{ attestation.policier.prenomAgent }} <br>
-                    <span class="enGras"> Mle Collect : </span>{{ attestation.policier.matriculeDuAgent }} <br><br>
+                    <span class="enGras"> Agent verbalisateur : </span>{{ attestation.policier.nomAgent }} {{ attestation.policier.prenomAgent }} <br>
+                    <span class="enGras"> N° Matricule : </span>{{ attestation.policier.matriculeDuAgent }} <br><br>
 
                 </p>
             </div>
@@ -46,7 +46,7 @@
                     <span class="enGras"> Permis: </span> {{ attestation.conducteur.numeroPermis  }}<br>
                     <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }} le {{ attestation.date|date('d/m/Y') }}<br>
                     Appartenant à :<span class="enGras"> {{ attestation.conducteur.prenomConducteur  }} {{ attestation.conducteur.nomConducteur  }} </span> <br>
-                    Ont été déposées à la Brigade nationnale de {{ attestation.policier.commissariat.nomBrigade }}<br>
+                    Ont été déposées à la Brigade de {{ attestation.policier.commissariat.nomBrigade }} de la Gendermerie nationnale<br>
                     Il devra se présenter à la brigade pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
                     Payé : {{ attestation.payer  }} 
                     <STRONG>   
@@ -65,15 +65,15 @@
                 <p>
                     {%set montant = 0 %}
                 <h5>Infraction constatée:</h5>
-                <strong> Nom infraction</strong>:
+                <strong> Nom </strong>:<br>
                 {% for infraction in infractions %}
-                    {{ infraction.nomInfraction  }} |  <br>                          
+                    -- {{ infraction.nomInfraction  }} |  <br>                          
                 {% endfor %}<br>
                 <strong> Montant à payer</strong>:
                 {% for infraction in infractions %}
                     {% set montant = montant + infraction.amende %}                             
                 {% endfor %}
-                {{ montant }}
+                {{ montant }} FCFA
                 </p>
             </div>
 

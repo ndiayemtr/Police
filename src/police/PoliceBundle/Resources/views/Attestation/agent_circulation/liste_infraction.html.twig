@@ -14,7 +14,7 @@
             </div>
             <form id="formInfraction" action="{{ path('police_attestation_liste_infraction',{'id' : id}) }}"
                   method="POST">
-                <h2 id="titreInfraction">Ajouez une  Infraction</h2>
+                <h2 id="titreInfraction">Ajouter Infraction</h2>
                 <div class="span3">
 
                     <div class="box-body">
@@ -47,11 +47,9 @@
                     <div class="box-body">
 
                         <div class="form-group">
-                            <label class="page1">Amende</label>
-                            <div class="tooltips" title="Please select the city that the customer is primarily to be served from.">
-                                <select id="amende" name="amende" placeholder="Anycity">
-                                </select><br>
-                            </div>
+                            <label class="page1"style="cursor: none;font-size: 20px" id="label_amende">Amende</label>
+                            <span class="page1" id="amende" name="amende" style="color: #ffffff;"></span>
+
                         </div>
 
 
@@ -64,13 +62,18 @@
                         <button type="submit" style="width: 220px;" class="btn btn-primary"> Ajouter l'infraction </button>
                         <a class="btn btn-info" style="text-decoration: none; width: 195px; color: #ffffff;" href="{{ path('police_attestation_valid', {'id':id} )}}">
                             Terminer
-                        </a>
+                        </a><br>
+                            {{ render(controller('PoliceBundle:Attestation:infractionEnCours',{ 'id': id })) }}
                     </div>
+                              
                 </div>
 
+             
 
 
             </form>
+
+
         </div>
     </div>
 

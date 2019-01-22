@@ -40,6 +40,13 @@ class Commissariat
      *@ORM\JoinColumn(nullable=false)
      */
     private $commissaire;
+    
+        
+    /**
+     *@ORM\ManyToOne(targetEntity="police\PoliceBundle\Entity\Zone", cascade={"persist", "remove"})
+     *@ORM\JoinColumn(nullable=false)
+     */
+    private $zone;
 
 
     /**
@@ -134,5 +141,29 @@ class Commissariat
     public function getCommissaire()
     {
         return $this->commissaire;
+    }
+
+    /**
+     * Set zone
+     *
+     * @param \police\PoliceBundle\Entity\Zone $zone
+     *
+     * @return Commissariat
+     */
+    public function setZone(\police\PoliceBundle\Entity\Zone $zone)
+    {
+        $this->zone = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Get zone
+     *
+     * @return \police\PoliceBundle\Entity\Zone
+     */
+    public function getZone()
+    {
+        return $this->zone;
     }
 }

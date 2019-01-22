@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 15 Janvier 2019 à 15:23
+-- Généré le :  Mar 22 Janvier 2019 à 16:46
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -45,9 +45,9 @@ CREATE TABLE `attestation` (
 --
 
 INSERT INTO `attestation` (`id`, `policier_id`, `conducteur_id`, `numeroAttestation`, `date`, `lieu`, `infractionConstater`, `dateRecuperePermis`, `payer`, `etatPiece`, `categorie`) VALUES
-(1, 2, 1, 1, '2018-09-26', 'teste 2', 'teste 2', '2018-09-26', 'NON', 'pas retirée', NULL),
+(1, 2, 1, 1, '2018-09-26', 'teste 2', 'teste 2', '2019-01-16', 'OUI', 'pas retirée', NULL),
 (2, 2, 2, 3, '2018-09-27', 'PR', 'Usage de téléphoner au volant', '2018-09-28', 'NON', 'pas retirée', NULL),
-(3, 2, 3, 900, '2018-09-28', 'PRE', 'mal stationné', '2018-09-29', 'NON', 'pas retirée', NULL),
+(3, 2, 3, 900, '2018-09-28', 'PRE', 'mal stationné', '2019-01-16', 'OUI', 'pas retirée', NULL),
 (4, 2, 4, 20181001, '2018-10-02', 'cpi', 'défaut de visite technique', '2018-10-16', 'OUI', 'pas retirée', NULL),
 (5, 2, 5, 20181002, '2018-10-16', 'test7', 'test7', '2018-10-16', 'OUI', 'pas retirée', NULL),
 (6, 2, 7, 20181003, '2018-10-16', 'teste11', 'teste11', '2018-10-16', 'OUI', 'pas retirée', NULL),
@@ -60,10 +60,15 @@ INSERT INTO `attestation` (`id`, `policier_id`, `conducteur_id`, `numeroAttestat
 (13, 2, 14, 20190101, '2019-01-07', 'iiii', 'hhhh', '2019-01-08', 'OUI', 'pas retirée', NULL),
 (14, 2, 15, 20190102, '2019-01-07', 'oooo', 'ppppp', '2019-01-08', 'OUI', 'retirée', NULL),
 (15, 2, 16, 20190103, '2019-01-08', 'iiii', 'ooooo', '2019-01-08', 'OUI', 'retirée', NULL),
-(16, 2, 22, 20190104, '2019-01-14', 'oooo', 'ssss', '2019-01-14', 'NON', 'pas retirée', NULL),
-(17, 2, 24, 20190105, '2019-01-14', 'thies', 'normal', '2019-01-14', 'NON', 'pas retirée', NULL),
+(16, 2, 22, 20190104, '2019-01-14', 'oooo', 'ssss', '2019-01-16', 'OUI', 'pas retirée', NULL),
+(17, 2, 24, 20190105, '2019-01-14', 'thies', 'normal', '2019-01-16', 'OUI', 'pas retirée', NULL),
 (18, 2, 25, 20190106, '2019-01-14', 'pikine nour', 'Normal', '2019-01-15', 'OUI', 'retirée', '4R&+'),
-(19, 2, 26, 20190107, '2019-01-14', 'marché Sam', 'Normal', '2019-01-15', 'OUI', 'pas retirée', '4R&+');
+(19, 2, 26, 20190107, '2019-01-14', 'marché Sam', 'Normal', '2019-01-15', 'OUI', 'retirée', '4R&+'),
+(20, 2, 27, 20190108, '2019-01-16', 'pikine Tally bou mag', 'Normal', '2019-01-16', 'OUI', 'pas retirée', '4R&+'),
+(21, 2, 28, 20190109, '2019-01-16', 'échangeur Sonatel et siège', 's\'est montré très agressif', '2019-01-16', 'OUI', 'pas retirée', '4R&+'),
+(29, 2, 36, 20190110, '2019-01-22', 'Rond point de Nguinth', 'o', '2019-01-22', 'NON', 'pas retirée', '4R&+'),
+(30, 2, 37, 20190111, '2019-01-22', 'Rond point de Nguinth', 'N', '2019-01-22', 'NON', 'pas retirée', '4R&+'),
+(31, 2, 38, 20190112, '2019-01-22', 'Rond point 6', 'j', '2019-01-22', 'NON', 'pas retirée', '4R&+');
 
 -- --------------------------------------------------------
 
@@ -74,8 +79,8 @@ INSERT INTO `attestation` (`id`, `policier_id`, `conducteur_id`, `numeroAttestat
 CREATE TABLE `commissaire` (
   `id` int(11) NOT NULL,
   `utilisateurs_id` int(11) NOT NULL,
-  `nomCommissaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `prenomCommissaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nomChef` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenomChef` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `typeSuperviseur` enum('Superviseur','Superviseur General') COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -83,11 +88,12 @@ CREATE TABLE `commissaire` (
 -- Contenu de la table `commissaire`
 --
 
-INSERT INTO `commissaire` (`id`, `utilisateurs_id`, `nomCommissaire`, `prenomCommissaire`, `typeSuperviseur`) VALUES
+INSERT INTO `commissaire` (`id`, `utilisateurs_id`, `nomChef`, `prenomChef`, `typeSuperviseur`) VALUES
 (1, 2, 'ndour', 'Assane', 'Superviseur'),
 (2, 3, 'sow', 'sophie', 'Superviseur'),
 (3, 6, 'fall', 'commissaire', 'Superviseur'),
-(4, 9, 'niveau', 'niveau', 'Superviseur General');
+(4, 9, 'niveau', 'niveau', 'Superviseur General'),
+(5, 14, 'chefMbour', 'chefMbour', 'Superviseur');
 
 -- --------------------------------------------------------
 
@@ -98,17 +104,20 @@ INSERT INTO `commissaire` (`id`, `utilisateurs_id`, `nomCommissaire`, `prenomCom
 CREATE TABLE `commissariat` (
   `id` int(11) NOT NULL,
   `commissaire_id` int(11) NOT NULL,
-  `numeroCommissariat` int(11) NOT NULL,
-  `nomCommissariat` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `numeroBrigade` int(11) NOT NULL,
+  `nomBrigade` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `zone_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `commissariat`
 --
 
-INSERT INTO `commissariat` (`id`, `commissaire_id`, `numeroCommissariat`, `nomCommissariat`) VALUES
-(1, 1, 1, 'Pikine'),
-(2, 2, 2, 'Guédiaway');
+INSERT INTO `commissariat` (`id`, `commissaire_id`, `numeroBrigade`, `nomBrigade`, `zone_id`) VALUES
+(1, 1, 1, 'Pikine', 2),
+(2, 2, 2, 'Guédiaway', 1),
+(3, 3, 3, 'Dakar', 3),
+(4, 5, 4, 'Mbour', 4);
 
 -- --------------------------------------------------------
 
@@ -149,7 +158,12 @@ INSERT INTO `conducteur` (`id`, `nomConducteur`, `prenomConducteur`, `numeroTele
 (22, 'jjjj', 'jjjj', 9999999, '9999999', 9999999, '9999999'),
 (24, 'ndiaye', 'Matar', 1234567, '1234567', 1234567, '1234567'),
 (25, 'Matar', 'ndiaye', 12344555, '12344555', 12344555, '12344555'),
-(26, 'Ndiay', 'Latyr', 965443, '0965443', 965443, '0965443');
+(26, 'Ndiay', 'Latyr', 965443, '0965443', 965443, '0965443'),
+(27, 'thioune', 'Cheikh', 917653, '917653', 917653, '917653'),
+(28, 'diop', 'moussa', 123865, '123865', 123865, '123865'),
+(36, 'LLL', 'LLLL', 99999, '888', 888, '999'),
+(37, 'III', 'III', 888, 'IIIKK', 888, 'UUYHg'),
+(38, 'ooo', 'ooo', 111, '666661', 111, '777777');
 
 -- --------------------------------------------------------
 
@@ -200,7 +214,15 @@ INSERT INTO `infraction` (`id`, `nomInfraction`, `typeInfraction`, `amende`, `at
 (53, 'Défaut de présentation de carte grise', 'Pièce', 5000, 17),
 (54, 'Excès de vitesse', 'Conduite', 4000, 17),
 (55, 'Défaut de présentation de carte grise', 'Pièce', 5000, 18),
-(56, 'Circulation à gauche', 'Conduite', 1000, 19);
+(56, 'Circulation à gauche', 'Conduite', 1000, 19),
+(57, 'Défaut de phare', 'Vehicule', 3500, 20),
+(58, 'Croisement défectueux', 'Vehicule', 4000, 20),
+(59, 'Inobservation de feux tricolores', 'Conduite', 2500, 21),
+(60, 'Défaut d’extincteur pour véhicule', 'Equipement', 5000, 21),
+(62, 'Défaut de pré signalisation pour les véhicules de 10 tonnes et plus', 'Vehicule', 6000, 30),
+(72, 'Échappement libre ou bruyant', 'Vehicule', 4000, 30),
+(73, 'Surcharge de marchandises', 'Operation', 10000, 30),
+(74, 'Défaut de présentation de carte grise', 'Pièce', 5000, 31);
 
 -- --------------------------------------------------------
 
@@ -212,23 +234,28 @@ CREATE TABLE `policier` (
   `id` int(11) NOT NULL,
   `commissariat_id` int(11) NOT NULL,
   `utilisateurs_id` int(11) NOT NULL,
-  `nomPolicier` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `prenomPolicier` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `matriculeDuPolicier` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `typePolicier` enum('Agent de circulation','Agent remet piéce','Percepteur') COLLATE utf8_unicode_ci DEFAULT NULL
+  `nomAgent` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenomAgent` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `matriculeDuAgent` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `typeAgent` enum('Agent de circulation','Agent remet piéce','Percepteur') COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `policier`
 --
 
-INSERT INTO `policier` (`id`, `commissariat_id`, `utilisateurs_id`, `nomPolicier`, `prenomPolicier`, `matriculeDuPolicier`, `typePolicier`) VALUES
+INSERT INTO `policier` (`id`, `commissariat_id`, `utilisateurs_id`, `nomAgent`, `prenomAgent`, `matriculeDuAgent`, `typeAgent`) VALUES
 (1, 1, 4, 'henry', 'henry', '765MH', 'Agent de circulation'),
 (2, 2, 5, 'yade', 'lamine', '769MH', 'Agent de circulation'),
 (3, 1, 7, 'teste', 'teste', 'teste', 'Agent de circulation'),
 (4, 1, 8, 'teste3', 'teste3', 'teste3', 'Percepteur'),
 (5, 2, 10, 'policier_percepteur', 'policier_percepteur', '987MH', 'Percepteur'),
-(6, 2, 11, 'gestion_piece', 'gestion_piece', '6754/GF', 'Agent remet piéce');
+(6, 2, 11, 'gestion_piece', 'gestion_piece', '6754/GF', 'Agent remet piéce'),
+(7, 1, 12, 'mbodj', 'dame', '7699/GF', 'Agent de circulation'),
+(8, 3, 13, 'testDakar', 'testDakar', '4567/YH', 'Agent de circulation'),
+(9, 4, 15, 'mbour_cir', 'mbour_cir', '4512/YH', 'Agent de circulation'),
+(10, 4, 16, 'mbour_concept', 'mbour_concept', '4569/YH', 'Percepteur'),
+(11, 4, 17, 'mbour_gesPiece', 'mbour_gesPiece', '2167/YH', 'Agent remet piéce');
 
 -- --------------------------------------------------------
 
@@ -268,17 +295,47 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`) VALUES
-(1, 'matar', 'matar', 'matar@gmail.com', 'matar@gmail.com', 1, NULL, '$2y$13$8uHMm1U7BvmzikSnbHubT.Ip.af6yfAVejHXe2QOdSCxQWOJbMHA.', '2019-01-09 09:33:49', NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}'),
+(1, 'matar', 'matar', 'matar@gmail.com', 'matar@gmail.com', 1, NULL, '$2y$13$8uHMm1U7BvmzikSnbHubT.Ip.af6yfAVejHXe2QOdSCxQWOJbMHA.', '2019-01-21 12:43:01', NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}'),
 (2, 'Assane', 'assane', 'ndour@gmail.com', 'ndour@gmail.com', 1, NULL, '$2y$13$cy1ZZELw77mEJ6lVyx6l0OxVPI7Qeq3t3zg2v5twd4qo60zJ7qbPK', '2018-12-13 02:26:58', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_COMMISSAIRE";}'),
-(3, 'sophie', 'sophie', 'sow@gmail.com', 'sow@gmail.com', 1, NULL, '$2y$13$OcxzYhH05Tm7gCS9UyY1Lu0.YSCv/tgh9.0..4UZRCRRpd4igTm.2', '2019-01-15 13:19:14', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_COMMISSAIRE";}'),
+(3, 'sophie', 'sophie', 'sow@gmail.com', 'sow@gmail.com', 1, NULL, '$2y$13$OcxzYhH05Tm7gCS9UyY1Lu0.YSCv/tgh9.0..4UZRCRRpd4igTm.2', '2019-01-16 09:22:14', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_COMMISSAIRE";}'),
 (4, 'henry', 'henry', 'henry@gmail.com', 'henry@gmail.com', 1, NULL, '$2y$13$kKsj3RlI/WWlFdUT5Eb8WOZNgG1OfVI6AWtejgd/HghtWFv9T0Zo2', '2018-10-30 10:15:35', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_POLICIER";}'),
-(5, 'lamine', 'lamine', 'yade@gmail.com', 'yade@gmail.com', 1, NULL, '$2y$13$ane6L/wl9roagQopXvzhiesNZp5L83r97tcrH73kOT9IEw8c3V5lu', '2019-01-14 15:15:57', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_POLICIER";}'),
+(5, 'lamine', 'lamine', 'yade@gmail.com', 'yade@gmail.com', 1, NULL, '$2y$13$ane6L/wl9roagQopXvzhiesNZp5L83r97tcrH73kOT9IEw8c3V5lu', '2019-01-22 09:41:31', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_POLICIER";}'),
 (6, 'commissaire', 'commissaire', 'fall@gmail.com', 'fall@gmail.com', 1, NULL, '$2y$13$2Cm00xJH2bRKXf.ApsRL9.waMLL9gy/vca2F8IZEYP6cmjWFLWdGe', NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_COMMISSAIRE";}'),
 (7, 'teste', 'teste', 'teste@gmail.com', 'teste@gmail.com', 1, NULL, '$2y$13$/pomKRygCQbCx71FBo3a1u94nHITTbhnrerwr.B0fOOzWLLuPlPFq', NULL, NULL, NULL, 'a:1:{i:0;s:13:"ROLE_POLICIER";}'),
 (8, 'teste3', 'teste3', 'teste3@gmail.com', 'teste3@gmail.com', 1, NULL, '$2y$13$WtAqGAe40YeCyMpqgH2I8eIZLkqDWrkYumm8pniYdSkbqufv5R2mO', '2018-10-15 15:51:04', NULL, NULL, 'a:1:{i:0;s:15:"ROLE_PERCEPTEUR";}'),
-(9, 'niveau', 'niveau', 'niveau@gmail.com', 'niveau@gmail.com', 1, NULL, '$2y$13$49VIZ6tK.BcPm.zkmvae8Oc0UvRgvp/dI7IJwy0BtDEFYvbhBTmPm', '2019-01-15 13:27:24', NULL, NULL, 'a:1:{i:0;s:24:"ROLE_SUPERVISEUR_GENERAL";}'),
-(10, 'policier_percepteur', 'policier_percepteur', 'policier_percepteur@gmail.com', 'policier_percepteur@gmail.com', 1, NULL, '$2y$13$GIbXHzhAo0NbQhSD9a6Gw.u9rcRWCT1OONUnNkL3Md3flztUQaDaS', '2019-01-15 10:20:29', NULL, NULL, 'a:1:{i:0;s:15:"ROLE_PERCEPTEUR";}'),
-(11, 'gestion_piece', 'gestion_piece', 'gestion_piece@gmail.com', 'gestion_piece@gmail.com', 1, NULL, '$2y$13$HqHE0rdqvWS5HFJ65G5ffO0rt5VS/060sU8H7KT9Nozg22nymJcJK', '2019-01-15 12:05:33', NULL, NULL, 'a:1:{i:0;s:19:"ROLE_REMETTRE_PIECE";}');
+(9, 'niveau', 'niveau', 'niveau@gmail.com', 'niveau@gmail.com', 1, NULL, '$2y$13$49VIZ6tK.BcPm.zkmvae8Oc0UvRgvp/dI7IJwy0BtDEFYvbhBTmPm', '2019-01-16 15:51:50', NULL, NULL, 'a:1:{i:0;s:24:"ROLE_SUPERVISEUR_GENERAL";}'),
+(10, 'policier_percepteur', 'policier_percepteur', 'policier_percepteur@gmail.com', 'policier_percepteur@gmail.com', 1, NULL, '$2y$13$GIbXHzhAo0NbQhSD9a6Gw.u9rcRWCT1OONUnNkL3Md3flztUQaDaS', '2019-01-16 15:24:33', NULL, NULL, 'a:1:{i:0;s:15:"ROLE_PERCEPTEUR";}'),
+(11, 'gestion_piece', 'gestion_piece', 'gestion_piece@gmail.com', 'gestion_piece@gmail.com', 1, NULL, '$2y$13$HqHE0rdqvWS5HFJ65G5ffO0rt5VS/060sU8H7KT9Nozg22nymJcJK', '2019-01-16 15:37:27', NULL, NULL, 'a:1:{i:0;s:19:"ROLE_REMETTRE_PIECE";}'),
+(12, 'dame', 'dame', 'mbodj@gmail.com', 'mbodj@gmail.com', 1, NULL, '$2y$13$sgVMyuMxtSR4mIc/izq8YOkTKuHJN0VsTOJT1KBkGVmDMI3DA9sXC', NULL, NULL, NULL, 'a:1:{i:0;s:13:"ROLE_POLICIER";}'),
+(13, 'testDakar', 'testdakar', 'testDakar@gmail.com', 'testdakar@gmail.com', 1, NULL, '$2y$13$l0gq7quNs4O39d5I5TcuvuguBs36K7fIsS11s0.Aepdk/xyHRVrRS', NULL, NULL, NULL, 'a:1:{i:0;s:13:"ROLE_POLICIER";}'),
+(14, 'chefMbour', 'chefmbour', 'chefMbour@gmail.com', 'chefmbour@gmail.com', 1, NULL, '$2y$13$bkDqIrLpCbm404LiKay5DOEzECsSICeR9ZwbQhzJjDhva4gnnesaG', NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_COMMISSAIRE";}'),
+(15, 'mbour_cir', 'mbour_cir', 'mbour_cir@gmail.com', 'mbour_cir@gmail.com', 1, NULL, '$2y$13$gXtja/PZPSrdiQD/a1t1YeDZPAFjM7g51FwPlI/xJoZeIVxl1CUum', '2019-01-16 10:33:43', NULL, NULL, 'a:1:{i:0;s:13:"ROLE_POLICIER";}'),
+(16, 'mbour_concept', 'mbour_concept', 'mbour_concept@gmail.com', 'mbour_concept@gmail.com', 1, NULL, '$2y$13$ZZ4GejIBle0gaW0Eq0hb6.1US48AkAATPQQp3U6g0QoU.VY3.KXG.', NULL, NULL, NULL, 'a:1:{i:0;s:15:"ROLE_PERCEPTEUR";}'),
+(17, 'mbour_gesPiece', 'mbour_gespiece', 'mbour_gesPiece@gmail.com', 'mbour_gespiece@gmail.com', 1, NULL, '$2y$13$b.ZSwqqzVran9UotGbcvxOoDKuEV.3gthZHTqkLKA4DIGtx.HEWsq', NULL, NULL, NULL, 'a:1:{i:0;s:19:"ROLE_REMETTRE_PIECE";}');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `zone`
+--
+
+CREATE TABLE `zone` (
+  `id` int(11) NOT NULL,
+  `numeroZone` int(11) NOT NULL,
+  `nomZone` enum('Zone Est','Zone Ouest','Zone Nord','Zone Sud') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adresseZone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `chefDeZone` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `zone`
+--
+
+INSERT INTO `zone` (`id`, `numeroZone`, `nomZone`, `adresseZone`, `chefDeZone`) VALUES
+(1, 1, 'Zone Est', 'Guédiaway/Canada', 'colonel kanté'),
+(2, 2, 'Zone Ouest', 'Pikine/Thiaroye', 'colonel sall'),
+(3, 3, 'Zone Sud', 'Dakar/le calerc', 'thiam'),
+(4, 4, 'Zone Nord', 'Thies/mbour', 'colonel ndao');
 
 --
 -- Index pour les tables exportées
@@ -304,7 +361,8 @@ ALTER TABLE `commissaire`
 --
 ALTER TABLE `commissariat`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_F87ED495F7EA9D21` (`commissaire_id`);
+  ADD UNIQUE KEY `UNIQ_F87ED495F7EA9D21` (`commissaire_id`),
+  ADD KEY `IDX_F87ED4959F2C3FAB` (`zone_id`);
 
 --
 -- Index pour la table `conducteur`
@@ -343,6 +401,12 @@ ALTER TABLE `utilisateurs`
   ADD UNIQUE KEY `UNIQ_497B315EC05FB297` (`confirmation_token`);
 
 --
+-- Index pour la table `zone`
+--
+ALTER TABLE `zone`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -350,32 +414,32 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `attestation`
 --
 ALTER TABLE `attestation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT pour la table `commissaire`
 --
 ALTER TABLE `commissaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `commissariat`
 --
 ALTER TABLE `commissariat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `conducteur`
 --
 ALTER TABLE `conducteur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT pour la table `infraction`
 --
 ALTER TABLE `infraction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT pour la table `policier`
 --
 ALTER TABLE `policier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `test`
 --
@@ -385,7 +449,12 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT pour la table `zone`
+--
+ALTER TABLE `zone`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables exportées
 --
@@ -407,6 +476,7 @@ ALTER TABLE `commissaire`
 -- Contraintes pour la table `commissariat`
 --
 ALTER TABLE `commissariat`
+  ADD CONSTRAINT `FK_F87ED4959F2C3FAB` FOREIGN KEY (`zone_id`) REFERENCES `zone` (`id`),
   ADD CONSTRAINT `FK_F87ED495F7EA9D21` FOREIGN KEY (`commissaire_id`) REFERENCES `commissaire` (`id`);
 
 --

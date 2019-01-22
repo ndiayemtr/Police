@@ -4,14 +4,23 @@ easy_admin:
         date:    'd/m/Y'
         time:    'H:i'
         datetime: 'd/m/Y H:i:s'
+    list:
+        max_results: 7
         
     entities:
-        Brigade:
-            class: police\PoliceBundle\Entity\Commissariat
+        Zone:
+            class: police\PoliceBundle\Entity\Zone
+            label: 'Zone'
             controller: Utilisateurs\UtilisateursBundle\Controller\UserController
             
-        Chef_de_la_brigade:
+        Brigade:
+            class: police\PoliceBundle\Entity\Commissariat
+            label: 'Brigade'
+            controller: Utilisateurs\UtilisateursBundle\Controller\UserController
+            
+        Commissaire:
             class: Utilisateurs\UtilisateursBundle\Entity\Commissaire
+            label: 'Superviseur de la brigade'
             controller: Utilisateurs\UtilisateursBundle\Controller\UserController
             form:
                 fields:
@@ -19,8 +28,9 @@ easy_admin:
                 - { property: 'prenomChef'}
                 - { property: 'typeSuperviseur', type:'choice', type_options: {choices: {'Superviseur':'Superviseur','Superviseur General':'Superviseur General'}}}
             
-        Agent_de_la_brigade:
+        Agent:
             class: Utilisateurs\UtilisateursBundle\Entity\Policier
+            label: 'Agent de la brigade'
             controller: Utilisateurs\UtilisateursBundle\Controller\UserController
             form:
                 fields:
@@ -30,7 +40,6 @@ easy_admin:
                 - { property: 'commissariat'}
                 - { property: 'typeAgent', type:'choice', type_options: {choices: {'Agent de circulation':'Agent de circulation','Agent remet piéce':'Agent remet piéce', 'Percepteur':'Percepteur'}}}
             
-        Utilisateurs:
-            class: Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
-            controller: Utilisateurs\UtilisateursBundle\Controller\UserController
+
+            
             

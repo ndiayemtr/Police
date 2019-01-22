@@ -25,8 +25,8 @@
                 </p>
                 __________________
                 <p>
-                    <span class="enGras"> Le genderme en charge : </span>{{ attestation.policier.nomAgent }} {{ attestation.policier.prenomAgent }} <br>
-                    <span class="enGras"> Mle Collect : </span>{{ attestation.policier.matriculeDuAgent }}
+                   <span class="enGras"> Le genderme en charge : </span>{{ attestation.policier.nomAgent }} {{ attestation.policier.prenomAgent }} <br>
+                    <span class="enGras"> N° Matricule : </span>{{ attestation.policier.matriculeDuAgent }} <br><br>
                 </p>
             </div>
 
@@ -39,7 +39,7 @@
                     <span class="enGras"> Permis: </span> {{ attestation.conducteur.numeroPermis  }}<br>
                     <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }} le {{ attestation.date|date('d/m/Y') }}<br>
                     Appartenant à :<span class="enGras"> {{ attestation.conducteur.prenomConducteur  }} {{ attestation.conducteur.nomConducteur  }} </span> <br>
-                    Ont été déposées à la Brigade nationnale de {{ attestation.policier.commissariat.nomBrigade }}<br>
+                    Ont été déposées à la Brigade de {{ attestation.policier.commissariat.nomBrigade }} de la Gendermerie nationnale<br>
                     Il devra se présenter à la brigade pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
                 </p>
                 
@@ -58,7 +58,7 @@
                         {% for infraction in infractions %}
                             {% set montant = montant + infraction.amende %}                             
                         {% endfor %}
-                        {{ montant }}
+                        {{ montant }} FCFA
                     </p>
                 </div>
                     <div class="span8 alert alert-warning" role="alert">

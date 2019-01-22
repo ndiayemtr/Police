@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label>Type Infraction</label>
                             <select id="type_infraction" name="type_infraction" placeholder="Choisir Type Infraction">
-                                <option></option>
+                                <option>{{infraction.typeInfraction}}</option>
                                 <option>Pièce</option>
                                 <option>Conduite</option>
                                 <option>Equipement</option>
@@ -33,7 +33,7 @@
                             <label class="page1">Nom Infraction</label>
                             <div class="tooltips" title="">
                                 <select id="nom_infraction" name="nom_infraction" placeholder="Anycity">
-                                    <option></option>
+                                    <option>{{infraction.nomInfraction}}</option>
                                 </select>
                             </div>
                         </div>
@@ -47,11 +47,9 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="page1">Amende</label>
-                            <div class="tooltips" title="Please select the city that the customer is primarily to be served from.">
-                                <select id="amende" name="amende" placeholder="Anycity">
-                                </select><br>
-                            </div>
+                            <label class="page1"style="cursor: none;font-size: 20px" id="label_amende">Amende</label>
+                            <span class="page1" id="amende" name="amende" style="color: #ffffff;"></span>
+
                         </div>
 
 
