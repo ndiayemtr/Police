@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ConducteurType extends AbstractType
 {
@@ -22,7 +23,20 @@ class ConducteurType extends AbstractType
                 ->add('numeroTelephone',  IntegerType::class)
                 ->add('numeroPermis',     TextType::class)
                 ->add('ncni',             IntegerType::class)
-                ->add('numeroCarteGrise', TextType::class);
+                ->add('numeroCarteGrise', TextType::class)
+                 ->add('sexe', ChoiceType::class, array(
+                    'choices' => array(
+                        'Masculin' => 'Masculin',
+                        'Féminin' => 'Féminin',
+                    ),                   
+                ))
+                 ->add('pieceConfisquer', ChoiceType::class, array(
+                    'choices' => array(
+                        'Permis de conduire' => 'Permis de conduire',
+                        'Carte grise' => 'Carte grise',
+                        'CNI' => 'CNI',
+                    ),                   
+                ));
     }
     
     /**

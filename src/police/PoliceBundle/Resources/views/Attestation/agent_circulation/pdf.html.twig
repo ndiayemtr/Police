@@ -41,14 +41,31 @@
             <div class="span3">
 
                 <p>
+                    
+                <p>
                     <span class="enGras"> Monsieur le Chef de la brigade </span>
                     {{ attestation.policier.commissariat.commissaire.PrenomChef }} {{ attestation.policier.commissariat.commissaire.NomChef }} <br>
-                    Certifie que les pièces suivantes : <br>
-                    <span class="enGras"> Permis: </span> {{ attestation.conducteur.numeroPermis  }}<br>
-                    <span class="enGras"> N° Carte grise: </span> {{ attestation.conducteur.numeroCarteGrise  }} le {{ attestation.date|date('d/m/Y') }}<br>
+                    Certifie que la pièce suivante : <br>
+                    <span class="enGras"> {{ attestation.conducteur.pieceConfisquer }}</span>: 
+                    
+                      {% if attestation.conducteur.pieceConfisquer == 'Permis de conduire'%} 
+                            N° <span style="color: red"> {{ attestation.conducteur.numeroPermis }}</span>
+                      {% elseif attestation.conducteur.pieceConfisquer == 'Carte grise'%} 
+                          N° <span style="color: red"> {{ attestation.conducteur.numeroCarteGrise }}</span>
+                      {% elseif attestation.conducteur.pieceConfisquer == 'CNI'%} 
+                          N° <span style="color: red"> {{ attestation.conducteur.numeroTelephone }}</span>
+                      {% endif %}<br>
+                      
+                    le {{ attestation.date|date('d/m/Y') }} <br>
                     Appartenant à :<span class="enGras"> {{ attestation.conducteur.prenomConducteur  }} {{ attestation.conducteur.nomConducteur  }} </span> <br>
-                    Ont été déposées à la Brigade de {{ attestation.policier.commissariat.nomBrigade }} de la Gendermerie nationnale<br>
-                    Il devra se présenter à la brigade pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
+                    est déposé à la Brigade de {{ attestation.policier.commissariat.nomBrigade }} de la Gendermerie nationnale.<br>
+                    {% if attestation.conducteur.sexe == 'Masculin' %}
+                            Il
+                         {% else %}
+                               Elle
+                        {% endif %}
+                     devra se présenter à la brigade pour les recupérer le :<span class="enGras"> {{ attestation.dateRecuperePermis|date('d/m/Y') }}</span> <br>
+                </p>
                     Payé : {{ attestation.payer  }} 
                     <STRONG>   
                         {% if attestation.etatPiece == 'pas retirée'%} 
@@ -65,7 +82,11 @@
                  <div class="span3">
                     <p>
                         {%set montant = 0 %}
-                    <h5>Infraction constatée:</h5>
+                    {% if infractions|length > 1 %}
+                            <h5>Vous avez commis les infractions suivantes:</h5>
+                         {% else %}
+                               <h5>Vous avez commis l'infraction suivante:</h5>
+                        {% endif %}
                     <strong> Nom </strong>:<br> 
                         {% for infraction in infractions %}
                             -- {{ infraction.nomInfraction  }}  <br>                          

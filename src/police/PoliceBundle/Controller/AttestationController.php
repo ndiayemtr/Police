@@ -43,24 +43,8 @@ class AttestationController extends Controller {
 
         $form = $this->createForm(AttestationType::class, $attestation);
         $form->handleRequest($request);
-        
-        $validator = $this->get('validator');
-        
-         // On déclenche la validation sur notre object
-    $listErrors = $validator->validate($attestation);
-    
-             // Si le tableau n'est pas vide, on affiche les erreurs
-    if(count($listErrors) > 0) {
-      //return new Response(print_r($listErrors, true));
-      var_dump(count($listErrors));
-    die();
-      }
     
         if ($request->isMethod('POST') && $form->isValid()) {
-            
-    
-   
-
             $em->persist($attestation);
             $em->flush();
             $idAttestation = $attestation->getId();

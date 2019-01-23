@@ -3,6 +3,7 @@
 namespace police\PoliceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Attestation
@@ -70,13 +71,12 @@ class Attestation
      */
     private $categorie;
     
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="etatPiece", type="string", columnDefinition="enum('retirée', 'pas retirée')")
      */
     private $etatPiece;
-   
     
     /**
      * @ORM\ManyToOne(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Policier", cascade={"persist", "remove"})
@@ -87,6 +87,8 @@ class Attestation
     /**
      * @ORM\ManyToOne(targetEntity="Utilisateurs\UtilisateursBundle\Entity\Conducteur", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * 
+     * @Assert\Valid()
      */
     private $conducteur;
 

@@ -3,6 +3,7 @@
 namespace Utilisateurs\UtilisateursBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Test
@@ -25,6 +26,8 @@ class Test
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * 
+     * )
      */
     private $nom;
 
@@ -34,6 +37,19 @@ class Test
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="chiffre", type="integer")
+      * @Assert\Length(
+     *      min = 4,
+     *      max = 6,
+     *      minMessage = "Votre Chiffre doit comporter au moins {{ limit }} caractères.",
+     *      maxMessage = "Votre Chiffre doit ddcomporter au moins {{ limit }} caractères."
+     * )
+     * 
+     */
+    private $chiffre;
 
 
     /**
@@ -93,5 +109,28 @@ class Test
     {
         return $this->prenom;
     }
-}
 
+    /**
+     * Set chiffre
+     *
+     * @param integer $chiffre
+     *
+     * @return Test
+     */
+    public function setChiffre($chiffre)
+    {
+        $this->chiffre = $chiffre;
+
+        return $this;
+    }
+
+    /**
+     * Get chiffre
+     *
+     * @return integer
+     */
+    public function getChiffre()
+    {
+        return $this->chiffre;
+    }
+}

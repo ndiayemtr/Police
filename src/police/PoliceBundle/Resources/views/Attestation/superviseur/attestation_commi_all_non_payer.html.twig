@@ -15,7 +15,7 @@
                 {% if attestations == null %}
                     <p>
                     <H3 class = "text-info"> Pas d'attestations disponible !!!</H3>
-                    {{ include('includeType/no_view.html.twig') }}
+                        {{ include('includeType/no_view.html.twig') }}
                     </ p>
                 {% endif %}
                 {% if attestations|default is not empty %}
@@ -24,7 +24,7 @@
                         <thead>
                             <tr>
                                 <th  style="text-align: center">N° Attes.</th>
-                                <th  style="text-align: center">Numéro cni</th>
+                                <th  style="text-align: center">Piéce confisquée</th>
                                 <th  style="text-align: center">Tél</th>
                                 <th  style="text-align: center">Lieu infraction</th>
                                 <th  style="text-align: center">Date</th>
@@ -38,7 +38,15 @@
                             {% for attestation in attestations %}
                                 <tr> 
                                     <td  style="text-align: center"> {{ attestation.numeroAttestation }} </td>                
-                                    <td  style="text-align: center"> {{ attestation.conducteur.ncni }} </td>
+                                     <td style="text-align: center"> 
+                                      {% if attestation.conducteur.pieceConfisquer == 'Permis de conduire'%} 
+                                            PC_<span style="color: red">{{attestation.conducteur.numeroPermis }}</span>
+                                        {% elseif attestation.conducteur.pieceConfisquer == 'Carte grise'%} 
+                                            CG_<span style="color: red">{{attestation.conducteur.numeroCarteGrise }}</span>
+                                        {% elseif attestation.conducteur.pieceConfisquer == 'CNI'%} 
+                                            CNI_<span style="color: red">{{attestation.conducteur.ncni }}</span>
+                                        {% endif %}
+                                  </td>
                                     <td  style="text-align: center"> {{ attestation.conducteur.numeroTelephone }} </td>
                                     <td  style="text-align: center"> {{ attestation.lieu }} </td>
                                     <td  style="text-align: center"> {{ attestation.date|date('d/m/Y') }} </td>

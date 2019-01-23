@@ -15,7 +15,14 @@
 
             <div class="span3">
                 {{ include('includeType/attestation.html.twig') }}
-                 <br><br>
+                 
+                    <div class="form-group">
+                    {{ form_label(form.infractionConstater, "Observations") }}
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.infractionConstater) }}
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4','cols': '8'}}) }}
+                </div>
                 <P>
                     <a class="btn btn-info" style="width: 120px; text-decoration: none; color: #ffffff;" href="{{ path('police_attestation_policier') }}">
                         Voir les attestattions
@@ -30,13 +37,7 @@
 
             <div class="span3">
                 {{ include('includeType/conducteur.html.twig') }}
-                <div class="form-group">
-                    {{ form_label(form.infractionConstater, "Observations") }}
-                    {# Affichage des erreurs pour ce champ précis. #}
-                    {{ form_errors(form.infractionConstater) }}
-                    {# Génération de l'input. #}
-                    {{ form_widget(form.infractionConstater, {'attr': {'class': 'form-control', 'rows': '4','cols': '8'}}) }}
-                </div>
+             
             </div> 
                 <P class="offset3">
                     <button style="width: 520px;" class="btn btn-primary">Valider ces informations et indiquer les infractions  </button>

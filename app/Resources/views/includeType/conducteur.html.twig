@@ -5,12 +5,19 @@
 
     <div class="box-body">
 
-                <div class="form-group">
+        <div class="form-group">
             {{ form_label(form.conducteur.ncni, "Numéro cni ") }}
             {# Affichage des erreurs pour ce champ précis. #}
             {{ form_errors(form.conducteur.ncni) }}
             {# Génération de l'input. #}
             {{ form_widget(form.conducteur.ncni, {'attr': {'class': 'form-control', 'placeholder':'Numéro cni '}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.conducteur.sexe, "Genre") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.conducteur.sexe) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.conducteur.sexe) }}
         </div>
         <div class="form-group">
             {{ form_label(form.conducteur.nomConducteur, "Nom Conducteur") }}
@@ -46,6 +53,13 @@
             {{ form_errors(form.conducteur.numeroCarteGrise) }}
             {# Génération de l'input. #}
             {{ form_widget(form.conducteur.numeroCarteGrise, {'attr': {'class': 'form-control', 'placeholder':'Numero carte grise'}}) }}
+        </div>
+          <div class="form-group">
+            {{ form_label(form.conducteur.pieceConfisquer, "Piéce à confisquée") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.conducteur.pieceConfisquer) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.conducteur.pieceConfisquer) }}
         </div>
 
     </div>

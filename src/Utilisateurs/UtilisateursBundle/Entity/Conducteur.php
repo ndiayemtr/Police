@@ -41,8 +41,13 @@ class Conducteur
      *
      *
      * @ORM\Column(name="numeroTelephone", type="integer")
-     * @Assert\Length(min=9)
-     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 9,
+     *      minMessage = "le numero de télephone doit comporter  {{ limit }} Chifre.",
+     *      maxMessage = "le numero de télephone doit comporter {{ limit }} Chiffre."
+     * )
+     * 
      */
     private $numeroTelephone;
 
@@ -50,6 +55,12 @@ class Conducteur
      * @var string
      *
      * @ORM\Column(name="numeroPermis", type="string", length=255)
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 6,
+     *      minMessage = "le numero de permis doit comporter  {{ limit }} Chifre.",
+     *      maxMessage = "le numero de permis doit comporter {{ limit }} Chiffre."
+     * )
      */
     private $numeroPermis;
 
@@ -57,6 +68,12 @@ class Conducteur
      * @var string
      *
      * @ORM\Column(name="ncni", type="integer")
+     * @Assert\Length(
+     *      min = 13,
+     *      max = 13,
+     *      minMessage = "le numero de cni doit comporter  {{ limit }} Chifre.",
+     *      maxMessage = "le numero de cni doit comporter {{ limit }} Chiffre."
+     * )
      */
     private $ncni;
 
@@ -66,6 +83,20 @@ class Conducteur
      * @ORM\Column(name="numeroCarteGrise", type="string", length=255)
      */
     private $numeroCarteGrise;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", columnDefinition="enum('Masculin', 'Féminin')")
+     */
+    private $sexe;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pieceConfisquer", type="string", columnDefinition="enum('Permis de conduire', 'Carte grise', 'CNI')")
+     */
+    private $pieceConfisquer;
 
 
     /**
@@ -220,5 +251,53 @@ class Conducteur
     public function getNcni()
     {
         return $this->ncni;
+    }
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     *
+     * @return Conducteur
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * Set pieceConfisquer
+     *
+     * @param string $pieceConfisquer
+     *
+     * @return Conducteur
+     */
+    public function setPieceConfisquer($pieceConfisquer)
+    {
+        $this->pieceConfisquer = $pieceConfisquer;
+
+        return $this;
+    }
+
+    /**
+     * Get pieceConfisquer
+     *
+     * @return string
+     */
+    public function getPieceConfisquer()
+    {
+        return $this->pieceConfisquer;
     }
 }

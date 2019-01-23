@@ -3,6 +3,9 @@
 namespace Utilisateurs\UtilisateursBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Utilisateurs\UtilisateursBundle\Entity\Test;
+use Utilisateurs\UtilisateursBundle\Form\TestType;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller {
 
@@ -63,6 +66,26 @@ class DefaultController extends Controller {
 
            return $this->redirectToRoute('police_attestation');
         }
+    }
+    
+    public function testeAction(Request $request){
+        
+        $em = $this->getDoctrine()->getManager();
+        $test = new Test();
+        $form = $this->createForm(TestType::class, $test);
+        $form->handleRequest($request);
+        
+        if ($request->isMethod('POST') && $form->isValid()) {
+            $em->persist($test);
+            $em->flush();
+
+            return $this->redirectToRoute('test');
+        
+         }
+        return $this->render('UtilisateursBundle:Default:teste.html.twig', array(
+                    'form' => $form->createView(),
+        ));
+
     }
 
 }
